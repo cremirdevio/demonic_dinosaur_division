@@ -1,0 +1,64 @@
+@import './variables.scss';
+
+.container {
+    max-width: 1270px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* section title */
+/* html code example:
+<div class="title">
+    <span class="title__bg">Mission</span>
+    <h2 class="title__text">Our Mission</h2>
+</div>
+*/
+.title {
+    display: inline-grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    align-items: end;
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;
+
+    /* add gradient opacity to the background text */
+    &::after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, rgba($dark-grey, 0.9) 20%, rgba(255, 255, 255, 0) 60%);
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+    }
+
+    .title__bg {
+        grid-column: 1;
+        grid-row: 1;
+        /* fallback color */
+        color: $red;
+        /* if browser supports text-stroke, we use it (everywhere except of IE) */
+        @supports (-webkit-text-stroke: 1px #aba89e) {
+            & {
+                color: transparent;
+                -webkit-text-stroke: 1px #aba89e;
+            }
+        }
+        font-family: $gasmask;
+        font-size: 6.4rem;
+        line-height: 120%;
+        z-index: 1;
+    }
+
+    .title__text {
+        grid-column: 1;
+        grid-row: 1;
+        color: #fffced;
+        font-family: $general;
+        font-size: 2.5rem;
+        line-height: 135%;
+        z-index: 3;
+    }
+}

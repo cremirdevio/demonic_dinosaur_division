@@ -1,21 +1,18 @@
-$container-padding: 15px;
+@import './variables.scss';
 
-*{
+* {
+    /* reset default styles */
+    margin: 0;
+    padding: 0;
+    border: none;
     box-sizing: border-box;
-}
-// body section
-body{
-    background-image: url('../img/body-background.jpg');
-    background-size: contain;
+    text-decoration: none;
+    list-style: none;
+    /* set common styles */
+    font-size: 1rem;
 }
 
-.container {
-    padding: $container-padding;
-}
-.title{
-    font-family: 'WAVESUN';
-    font-size: 36px;
-}
-.subtitle{
+html {
     font-size: 20px;
+    scroll-behavior: smooth;
 }

@@ -7,6 +7,7 @@ import LazyLoad from 'Components/LazyLoad/LazyLoad';
 // styles
 import './styles/styles.scss';
 import './fonts/fonts.scss';
+import './styles/components.scss';
 
 TestComponent();
 LazyLoad();
