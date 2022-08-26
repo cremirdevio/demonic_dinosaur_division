@@ -9,10 +9,27 @@
     text-decoration: none;
     list-style: none;
     /* set common styles */
+    font-family: $general;
     font-size: 1rem;
 }
 
 html {
     font-size: 20px;
     scroll-behavior: smooth;
+}
+
+body {
+    background-image: url('../sections/Header/header-img/2110.w023.n001.1228B.p1\ 1.jpg');
+}
+
+@media (max-width: $tablet) {
+    html {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: $phone) {
+    html {
+        font-size: 16px;
+    }
 }
