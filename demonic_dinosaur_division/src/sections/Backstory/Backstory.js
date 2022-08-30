@@ -8,7 +8,6 @@ const BackstorySection = (container) => {
 
     window.addEventListener('DOMContentLoaded', () => {
         const backstoryGallery = document.querySelector('.backstory__gallery');
-        console.log(backstoryGallery);
         const nftPics = document.querySelectorAll('.backstory__gallery-link');
 
         nftPics.forEach((linkEl, index) => {
@@ -20,8 +19,13 @@ const BackstorySection = (container) => {
 
                 /* initialize a gallery after processing the last element in the array */
                 if (nftPics.length - 1 === index) {
-                    console.log('init');
                     lightGallery(backstoryGallery);
+                    backstoryGallery.addEventListener('lgBeforeOpen', () => {
+                        backstoryGallery.style.animationPlayState = 'paused';
+                    });
+                    backstoryGallery.addEventListener('lgBeforeClose', () => {
+                        backstoryGallery.style.animationPlayState = 'running';
+                    });
                 }
             });
         });
