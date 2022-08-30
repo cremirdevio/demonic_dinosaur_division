@@ -12,6 +12,7 @@ const LazyLoad = () => {
                         const dataSrc = image.getAttribute('data-src');
                         import(/* webpackMode: "eager" */ `../../images/lazyload/${dataSrc}`).then((src) => {
                             image.setAttribute('src', src.default);
+                            image.parentNode.classList.add('image-loaded');
                         });
                         imageObserver.unobserve(image);
                     }
@@ -38,6 +39,7 @@ const LazyLoad = () => {
                             const dataSrc = img.getAttribute('data-src');
                             import(/* webpackMode: "lazy" */ `../../images/lazyload/${dataSrc}`).then((src) => {
                                 img.setAttribute('src', src.default);
+                                image.parentNode.classList.add('image-loaded');
                             });
                         }
                     });

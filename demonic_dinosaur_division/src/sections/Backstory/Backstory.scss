@@ -1,0 +1,15 @@
+@import '../../styles/variables.scss';
+
+.backstory {
+    background-color: $dark-grey;
+}
+
+.backstory__gallery {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-top: 7.5rem;
+    overflow: auto;
+}
+.backstory__gallery-link {
+    flex-shrink: 0;
+}

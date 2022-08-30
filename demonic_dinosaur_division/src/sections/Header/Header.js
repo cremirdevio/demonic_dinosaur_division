@@ -10,8 +10,6 @@ const HeaderSection = (container) => {
         const headerMenuBtn = headerMenu.querySelector('.header__menu-btn');
         const headerNav = headerMenu.querySelector('.header__nav');
 
-        console.log(headerMenuBtn);
-
         const toggleNav = () => {
             headerMenuBtn.classList.toggle('is-active');
             headerNav.classList.toggle('nav-active');

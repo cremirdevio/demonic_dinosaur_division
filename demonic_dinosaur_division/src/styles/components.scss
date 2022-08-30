@@ -14,51 +14,67 @@
 </div>
 */
 .title {
-    display: inline-grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    align-items: end;
+    margin-bottom: 1rem;
     text-align: center;
+    position: relative;
+}
+
+.title__text {
+    color: #fffced;
+    font-family: $general;
+    font-size: 2.5rem;
+    line-height: 210%;
     text-transform: uppercase;
     position: relative;
+    z-index: 3;
+}
 
-    /* add gradient opacity to the background text */
+.title__bg {
+    color: $red;
+    @supports (-webkit-text-stroke: 1px #aba89e) {
+        & {
+            color: transparent;
+            -webkit-text-stroke: 1px #aba89e;
+        }
+    }
+    font-family: $gasmask;
+    font-size: 6.4rem;
+    font-weight: 400;
+    line-height: 120%;
+    position: absolute;
+    bottom: 0;
+    left: 1rem;
+    z-index: -1;
+
     &::after {
         content: '';
         width: 100%;
-        height: 100%;
-        background: linear-gradient(to top, rgba($dark-grey, 0.9) 20%, rgba(255, 255, 255, 0) 60%);
+        height: 0;
+        box-shadow: 0 -20px 50px 25px;
         position: absolute;
-        top: 0;
         left: 0;
+        bottom: 0;
         z-index: 2;
     }
+}
 
-    .title__bg {
-        grid-column: 1;
-        grid-row: 1;
-        /* fallback color */
-        color: $red;
-        /* if browser supports text-stroke, we use it (everywhere except of IE) */
-        @supports (-webkit-text-stroke: 1px #aba89e) {
-            & {
-                color: transparent;
-                -webkit-text-stroke: 1px #aba89e;
-            }
-        }
-        font-family: $gasmask;
-        font-size: 6.4rem;
-        line-height: 120%;
-        z-index: 1;
+/* section subtitle */
+.subtitle {
+    color: #fffced;
+    font-family: $friary;
+    font-size: 0.8rem;
+    line-height: 120%;
+    text-align: center;
+}
+
+@media (max-width: $tablet) {
+    .container {
+        padding: 0 10px;
     }
+}
 
-    .title__text {
-        grid-column: 1;
-        grid-row: 1;
-        color: #fffced;
-        font-family: $general;
-        font-size: 2.5rem;
-        line-height: 135%;
-        z-index: 3;
+@media (max-width: $phone) {
+    .container {
+        padding: 0 5px;
     }
 }

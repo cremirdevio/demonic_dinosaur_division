@@ -1,4 +1,5 @@
 @import './variables.scss';
+@import './components.scss';
 
 * {
     /* reset default styles */
@@ -10,16 +11,12 @@
     list-style: none;
     /* set common styles */
     font-family: $general;
-    font-size: 1rem;
+    font-size: inherit;
 }
 
 html {
     font-size: 20px;
     scroll-behavior: smooth;
-}
-
-body {
-    background-image: url('../sections/Header/header-img/2110.w023.n001.1228B.p1\ 1.jpg');
 }
 
 @media (max-width: $tablet) {
