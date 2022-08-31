@@ -13,6 +13,7 @@ import { RoadmapSection } from 'Sections/Roadmap/Roadmap';
 import { BackstorySection } from 'Sections/Backstory/Backstory';
 import { TeamSection } from 'Sections/Team/Team';
 import { FormSection } from 'Sections/Form/Form';
+import { FooterSection } from 'Sections/Footer/Footer';
 // components
 import LazyLoad from 'Components/LazyLoad/LazyLoad';
 
@@ -36,6 +37,7 @@ const mainContainer = (container) => {
 // sections
 HeaderSection(bodyContainer);
 mainContainer(bodyContainer);
+FooterSection(bodyContainer);
 // components
 LazyLoad();
 
