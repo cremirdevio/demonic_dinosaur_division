@@ -11,6 +11,7 @@ import { IntroSection } from 'Sections/Intro/Intro';
 import { MissionSection } from 'Sections/Mission/Mission';
 import { RoadmapSection } from 'Sections/Roadmap/Roadmap';
 import { BackstorySection } from 'Sections/Backstory/Backstory';
+import { TeamSection } from 'Sections/Team/Team';
 // components
 import LazyLoad from 'Components/LazyLoad/LazyLoad';
 
@@ -25,6 +26,7 @@ const mainContainer = (container) => {
     MissionSection(mainTag);
     RoadmapSection(mainTag);
     BackstorySection(mainTag);
+    TeamSection(mainTag);
 
     return container.appendChild(mainTag);
 };
