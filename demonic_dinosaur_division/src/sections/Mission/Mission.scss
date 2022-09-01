@@ -3,11 +3,14 @@
 .mission {
     background-color: $dark-grey;
 }
+
 .mission__inner {
     padding-top: 6.5rem;
 }
+
 .mission__title {
     .title__bg {
+        /* shadow's color */
         &::after {
             color: rgba($dark-grey, 1);
         }
@@ -17,20 +20,21 @@
 .mission__plan {
     display: grid;
     margin-top: 5rem;
+    position: relative;
 }
 
+/* wrapper for the text in the subsection */
 .mission__plan-textwrapper {
     grid-column: 1;
     grid-row: 1;
     display: flex;
-    // flex-direction: column;
     flex-wrap: wrap;
     color: #fffced;
     font-weight: 600;
     z-index: 2;
-    // border: 2px solid #fff;
 }
 
+/* top text */
 .mission__plan-maintext {
     max-width: 85%;
     margin-top: 2.5rem;
@@ -38,6 +42,7 @@
     line-height: 135%;
 }
 
+/* link to the WFP website */
 .mission__plan-link {
     color: $light-red;
     transition: 0.3s ease;
@@ -51,13 +56,15 @@
     }
 }
 
+/* "Where we are" */
 .mission__plan-progress {
     width: 40%;
     margin-bottom: 5rem;
-    // border: 1px solid #000;
     writing-mode: vertical-rl;
     transform: rotate(-180deg);
 }
+
+/* progressbar white line */
 .mission__plan-progressbar {
     width: 290px;
     height: 8px;
@@ -67,6 +74,7 @@
     transform-origin: right;
     position: relative;
 }
+/* progressbar red line */
 .mission__plan-progressline {
     width: 10%;
     height: 8px;
@@ -78,9 +86,8 @@
     z-index: 1;
 }
 
+/* bottom text */
 .mission__plan-secondarytext {
-    // border: 1px solid #000;
-    // align-self: flex-end;
     max-width: 60%;
     margin: auto 0 5rem;
     font-size: 1.25rem;
@@ -92,14 +99,23 @@
     }
 }
 
+/* background dino picture */
 .mission__plan-img {
     grid-column: 1;
     grid-row: 1;
     margin: auto auto 0;
-    // border: 2px solid #fff !important;
     z-index: 1;
 }
 
+/* background running sctring */
+.mission__running-string {
+    transform: translateY(-50%);
+    position: absolute !important;
+    top: 50%;
+    left: 0;
+}
+
+/* Total Revenue Distributions subsection */
 .distributions {
     margin-top: 9rem;
 }
@@ -112,51 +128,52 @@
 
 .distributions__chart-wrapper {
     padding: 5rem 0 10rem;
-    // border: 3px solid #fffced;
-    // border-radius: 50%;
-    // position: relative;
 }
-.mission__chart-infomsg{
+
+/* message for mobile devices */
+.mission__chart-infomsg {
     display: none;
 }
+
+/* chart image */
 .mission__chart-img {
     width: 40% !important;
-    transform: translateX(-50%);
+    transform: translateX(-50%) scale(0.75);
+    opacity: 0.25;
+    transition: 0.5s ease-in-out;
     overflow: visible !important;
     position: relative;
     left: 50%;
-    // border: 3px solid #fffced !important;
 
     & > img {
-        // width: 40%;
         border-radius: 50%;
         position: relative;
         z-index: 2;
-        // border: 3px solid #fffced !important;
     }
 }
 
 .distributions__chart-item {
     color: #fffced;
-    // border: 2px solid red;
     position: absolute;
     z-index: 1;
 }
+/* wrapper for percentage and arrow */
 .distributions__chart-item-top {
-    // border: 1px solid yellow;
     position: relative;
 }
+/* pointing arrow */
 .distributions__chart-line {
     position: absolute;
 }
+/* description text */
 .distributions__chart-text {
     max-width: 12rem;
     font-family: $friary;
     font-size: 0.8rem;
     line-height: 120%;
-    // border: 1px solid red;
 }
 
+/* positioning items */
 #distributions__chart-item-1 {
     top: 0;
     left: -170px;
@@ -200,6 +217,7 @@
     }
 }
 
+/* SCREEN ADAPTATION */
 @media (max-width: 1200px) {
     #distributions__chart-item-3 {
         top: 450px;
@@ -210,7 +228,7 @@
     }
 }
 
-@media (max-width: 990px) {
+@media (max-width: $smallScreen) {
     .distributions__chart-wrapper {
         overflow: hidden;
     }
@@ -228,12 +246,15 @@
         }
     }
 }
-
+/* tablet */
 @media (max-width: $tablet) {
+    .mission__plan {
+        margin-top: 3rem;
+    }
+
     .mission__plan-progress {
         width: 100%;
         margin: 5rem 0;
-        // border: 1px solid #000;
         text-align: center;
         writing-mode: horizontal-tb;
         transform: rotate(0deg);
@@ -243,30 +264,33 @@
         transform: rotate(0deg) translate(0, 5px) scale(-1, -1);
         transform-origin: center;
     }
+
     .mission__plan-secondarytext {
         margin-left: auto;
     }
 
-    .mission__chart-infomsg{
+    .mission__chart-infomsg {
         display: block;
         margin-bottom: 2rem;
-        color: #FFFCED;
+        color: #fffced;
         text-align: center;
     }
+
     .mission__chart-img {
         width: 60% !important;
     }
+
     .distributions__title {
         text-align: center;
     }
-    .distributions__chart-wrapper{
+
+    .distributions__chart-wrapper {
         padding-bottom: 5rem;
     }
+
     .distributions__chart-item {
         width: 50px;
         height: 50px;
-        // border: 1px solid #000;
-        // overflow: hidden;
         z-index: 3;
 
         &:hover {
@@ -286,10 +310,12 @@
     .distributions__chart-line {
         display: none;
     }
+
     .distributions__chart-percentage {
         user-select: none;
         pointer-events: none;
     }
+
     .distributions__chart-text {
         max-width: 7rem;
         padding: 0.5rem;
@@ -300,6 +326,7 @@
         z-index: -1;
         transform: translateX(-25%) translateY(1rem);
     }
+
     #distributions__chart-item-1 {
         top: 60px;
         left: 100px;
@@ -317,12 +344,24 @@
         left: 250px;
     }
 }
-
+/* mobile phones */
 @media (max-width: $phone) {
+    .mission__plan {
+        margin-top: 2.5rem;
+    }
+
     .mission__plan-maintext,
     .mission__plan-secondarytext {
         max-width: 100%;
         text-align: center;
+    }
+
+    .distributions{
+        margin-top: 4.5rem;
+    }
+
+    .distributions__chart-wrapper{
+        padding: 2.5rem 0;
     }
 
     .mission__chart-img {

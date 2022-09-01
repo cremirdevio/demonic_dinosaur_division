@@ -72,12 +72,80 @@
     text-align: center;
 }
 
+/* infinite string */
+/* html code example: 
+<div class="running-string-wrapper">
+    <div class="running-string">
+        <p class="running-string-text">
+            Text text text
+        </p>
+        <p class="running-string-text">
+            Text text text
+        </p>
+    </div>
+</div> */
+.running-string-wrapper {
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+
+    &::after {
+        content: '';
+        width: 100%;
+        height: 0;
+        box-shadow: 0 -10px 50px 45px $dark-grey;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 2;
+    }
+}
+
+.running-string {
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+}
+
+.running-string-text {
+    display: inline-block;
+    margin-right: 3rem;
+    font-family: $wavesun;
+    font-size: 6rem;
+    line-height: 95%;
+    animation: moveRunningString 20s linear infinite;
+
+    color: #fffced;
+    @supports (-webkit-text-stroke: 1px #fffced) {
+        & {
+            color: transparent;
+            -webkit-text-stroke: 1px #fffced;
+        }
+    }
+}
+
+/* ANIMATIONS */
+@keyframes moveRunningString {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        /* if there's a visual bug with strings connection, try to change this value */
+        transform: translate3d(-105%, 0, 0);
+    }
+}
+
+/* SCREEN ADAPTATION */
+/* tablet */
 @media (max-width: $tablet) {
     .container {
         padding: 0 10px;
     }
 }
 
+/* mobile phones */
 @media (max-width: $phone) {
     .container {
         padding: 0 5px;

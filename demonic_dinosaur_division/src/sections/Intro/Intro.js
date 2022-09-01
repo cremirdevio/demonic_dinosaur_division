@@ -37,10 +37,7 @@ const IntroSection = (container) => {
             }
         });
 
-        // const image = document.querySelector('.intro__background-mainpic');
-        // console.log(window.innerHeight);
-        // image.style.height = `${window.innerHeight}px`;
-
+        /* animated title */
         const introBlock = document.querySelector('.intro');
         const introTitle = document.querySelectorAll('.intro__title .title__text');
         const introSubtitle = document.querySelector('.intro__subtitle');
@@ -67,9 +64,7 @@ const IntroSection = (container) => {
 
             const observer = new IntersectionObserver(observerCallback, observerOptions);
 
-            // titleItems.forEach((item) => {
             observer.observe(introBlock);
-            // });
         } else {
             introTitle.forEach((title, index) => {
                 setTimeout(() => {

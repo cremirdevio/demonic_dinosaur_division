@@ -179,6 +179,12 @@
             }
         }
 
+        &:nth-child(2) {
+            .title__bg {
+                transform: translateX(-1rem);
+            }
+        }
+
         &:nth-child(3) {
             .title__bg {
                 transform: translateX(2rem);
@@ -186,8 +192,19 @@
         }
 
         &.show-title {
-            transform: translateY(0);
             opacity: 1;
+
+            &:nth-child(1) {
+                transform: translateX(-1rem) translateY(0);
+            }
+
+            &:nth-child(2) {
+                transform: translateX(0) translateY(0);
+            }
+
+            &:nth-child(3) {
+                transform: translateX(1rem) translateY(0);
+            }
         }
     }
 
@@ -377,6 +394,25 @@
         }
     }
 }
+
+@media (max-width: $smallScreen) {
+    .intro__title {
+        .title__text {
+            &:nth-child(3) {
+                .title__bg {
+                    transform: translateX(0);
+                }
+            }
+
+            &.show-title {
+                &:nth-child(3) {
+                    transform: translateX(0) translateY(0);
+                }
+            }
+        }
+    }
+}
+
 /* tablet */
 @media (max-width: $tablet) {
     .intro__background {
@@ -401,9 +437,19 @@
                     transform: translateX(0);
                 }
             }
+
             &:nth-child(3) {
                 .title__bg {
                     transform: translateX(1rem);
+                }
+            }
+
+            &.show-title {
+                &:nth-child(1) {
+                    transform: translateX(0) translateY(0);
+                }
+                &:nth-child(3) {
+                    transform: translateX(0) translateY(0);
                 }
             }
         }
@@ -437,9 +483,15 @@
             top: -30%;
         }
     }
-    
+
     .intro__title {
         .title__text {
+            &:nth-child(2) {
+                .title__bg {
+                    transform: translateX(0.25rem);
+                }
+            }
+
             &:nth-child(3) {
                 .title__bg {
                     transform: translateX(2rem);
