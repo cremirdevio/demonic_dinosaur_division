@@ -1,7 +1,7 @@
 @import '../../styles/variables.scss';
 
 .header {
-    background-color: rgba(235, 235, 235, 0.1);
+    background-color: rgba($dark-grey, 0.95);
 
     @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
         & {
@@ -22,7 +22,6 @@
     justify-content: space-between;
     align-items: center;
     padding: 1.25rem 0;
-    // border: 1px solid #fff;
 }
 
 .header__logo {
@@ -32,10 +31,7 @@
     z-index: 1;
 }
 
-.header__menu {
-    // position: relative;
-}
-
+/* navigation burger button */
 .header__menu-btn {
     display: none !important;
     position: relative;
@@ -60,15 +56,17 @@
     }
 }
 
+/* links list */
 .header__nav {
     display: flex;
     justify-content: flex-end;
     flex-wrap: wrap;
     row-gap: 1rem;
     position: relative;
-    z-index: 201;
+    z-index: 2;
 }
 
+/* navigation link */
 .header__nav-link {
     display: flex;
     justify-content: center;
@@ -84,6 +82,7 @@
     line-height: 120%;
     transition: 0.3s ease;
 
+    /* path for svg icons */
     path {
         transition: 0.3s ease;
     }
@@ -116,7 +115,12 @@
     }
 }
 
+/* SCREEN ADAPTATION */
+/* tablet */
 @media (max-width: $tablet) {
+    .header__inner {
+        padding: 0.75rem 0;
+    }
     .header__menu-btn {
         display: inline-block !important;
     }
@@ -126,25 +130,22 @@
         justify-content: center;
         align-items: center;
         flex-wrap: nowrap;
-        // border: 2px solid #fff;
         height: 100vh;
         padding: 1rem;
         transform: translateY(-100%);
         transition: 0.5s ease-out;
-        overflow: auto;
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
-        // bottom: 0;
         z-index: 5;
 
         &::before {
             content: '';
             width: 100%;
             height: 100%;
-            background-color: rgba($grey, 0.75);
-            background-image: url('../../images/Logo-DDD111.png');
+            background-color: rgba($dark-grey, 0.95);
+            background-image: url('../../images/logo.svg');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
@@ -168,16 +169,18 @@
         width: 50vw;
         margin-right: 0;
         background-color: $grey;
+        font-size: 1rem;
         position: relative;
         z-index: 2;
     }
 }
 
+/* mobile phones */
 @media (max-width: $phone) {
     .header {
         @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
             & {
-                background-color: rgba($grey, 0.5);
+                background-color: rgba($dark-grey, 0.95);
                 backdrop-filter: none;
             }
         }

@@ -42,5 +42,8 @@ FooterSection(bodyContainer);
 LazyLoad();
 
 window.addEventListener('DOMContentLoaded', () => {
-    const osInstance = OverlayScrollbars(document.querySelector('body'), {});
+    /* use a custom scrollbar but only on desktop devices */
+    if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        const osInstance = OverlayScrollbars(document.querySelector('body'), {});
+    }
 });

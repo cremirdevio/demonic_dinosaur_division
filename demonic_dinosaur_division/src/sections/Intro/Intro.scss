@@ -4,28 +4,35 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
+    justify-content: center;
     align-items: center;
-    // border: 1px solid #fff;
     background-color: $dark-grey;
     overflow: hidden;
 
     .container {
-        grid-column: 1;
-        grid-row: 1;
+        grid-column: 1 / span 1;
+        grid-row: 1 / 1;
+        width: 100%;
         height: 100%;
+        position: relative;
         z-index: 2;
     }
 }
 
+/* background image */
 .intro__background {
-    grid-column: 1;
-    grid-row: 1;
-    width: fit-content;
+    display: flex;
+    justify-content: center;
+    grid-column: 1 / span 1;
+    grid-row: 1 / 1;
+    max-width: fit-content;
     margin: 0 auto;
     animation: moveBackgroundImage 30s linear 1s infinite;
     position: relative;
+    left: 0;
     z-index: 1;
 
+    /* prevent images from selecting */
     img {
         pointer-events: none;
     }
@@ -35,12 +42,13 @@
         height: 100vh;
         min-height: 750px;
         max-height: 1000px;
-        margin: 0 auto;
         position: relative;
         z-index: 1;
+        aspect-ratio: 29.75 / 10.82;
     }
 }
 
+/* class for sparks */
 .intro__bg-flame {
     background: linear-gradient(to bottom, rgba(147, 37, 38, 0.5), rgba(171, 141, 7, 0.5));
     clip-path: polygon(0 24%, 11% 3%, 33% 88%, 20% 100%);
@@ -53,12 +61,12 @@
     }
 }
 
+/* group of sparks in the left side */
 .intro__background-flames-left {
     width: 650px;
-    // border: 2px solid #fff;
+    transform: translateX(-500px);
     position: absolute;
     bottom: 0;
-    left: 0;
     z-index: 2;
 }
 #intro__bg-flame-1 {
@@ -98,12 +106,13 @@
     left: 270px;
 }
 
+/* group of sparks in the right side */
 .intro__background-flames-right {
     width: 200px;
-    // border: 2px solid #fff;
+    transform: translateX(-50%);
     position: absolute;
-    left: 950px;
     bottom: 85px;
+    left: 50%;
     z-index: 2;
 }
 #intro__bg-flame-7 {
@@ -132,43 +141,71 @@
     bottom: -10px;
 }
 
+/* main content */
 .intro__inner {
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100%;
-    // border: 1px solid #fff;
+    position: relative;
+
+    /* gradient background */
+    &::after {
+        content: '';
+        width: 100%;
+        height: 200%;
+        background: radial-gradient(circle, rgba($light-red, 0.5) 0%, transparent 50%);
+        transform: translateY(-25%);
+        position: absolute;
+        top: 0;
+        right: -40%;
+        z-index: 1;
+    }
 }
 
 .intro__title {
     margin-top: auto;
 
     .title__text {
+        display: inline-block;
         font-family: $horizon;
+        transform: translateY(-500%);
+        opacity: 0.25;
+        transition: 1s ease-out;
 
         &:nth-child(1) {
             .title__bg {
-                transform: translateX(-2rem);
+                transform: translateX(-3rem);
             }
         }
-        &:nth-child(2) {
-            .title__bg {
-                transform: translateX(-0.5rem);
-            }
-        }
+
         &:nth-child(3) {
             .title__bg {
-                transform: translateX(1rem);
+                transform: translateX(2rem);
             }
+        }
+
+        &.show-title {
+            transform: translateY(0);
+            opacity: 1;
         }
     }
 
+    /* shadow color */
     .title__bg {
         &::after {
             color: rgba(0, 0, 0, 0.75);
         }
     }
 }
+
+.intro__subtitle {
+    transform: translateY(-300%);
+    opacity: 0;
+    transition: 1s ease-out;
+}
+
+/* wrapper for the mouse icon and button to play the music theme */
 .intro__bottom {
     display: flex;
     justify-content: space-between;
@@ -177,8 +214,11 @@
     width: 100%;
     margin-top: auto;
     margin-bottom: 1rem;
-    // border: 1px solid #000;
+    position: relative;
+    z-index: 2;
 }
+
+/* button to play the music theme */
 .intro__audio-play {
     display: block;
     width: 8rem;
@@ -200,6 +240,7 @@
         z-index: 1;
     }
 }
+/* button's play icon */
 .intro__audio-play-icon {
     opacity: 0;
     transition: 0.3s ease;
@@ -209,10 +250,11 @@
     right: 10px;
     z-index: 2;
 }
+
+/* mouse icon */
 .intro__scroll {
     margin-right: 50%;
     transform: translateX(50%);
-    // border: 2px solid #fff;
     text-align: center;
     position: relative;
 
@@ -233,36 +275,47 @@
     }
 }
 
+/* ANIMATIONS */
 @keyframes moveBackgroundImage {
     0%,
     100% {
-        transform: translateX(0);
+        transform: translate3d(0, 0, 0);
     }
-    50% {
-        transform: translateX(-34%);
+    20% {
+        transform: translate3d(-250px, 0, 0);
+    }
+    75% {
+        transform: translate3d(200px, 0, 0);
     }
 }
-
+/* tablet version */
 @keyframes moveBackgroundImageTablet {
     0%,
     100% {
-        transform: translateX(0);
+        transform: translate3d(0, 0, 0);
     }
-    50% {
-        transform: translateX(-95%);
+    20% {
+        transform: translate3d(-450px, 0, 0);
+    }
+    75% {
+        transform: translate3d(600px, 0, 0);
     }
 }
-
+/* mobile phone version */
 @keyframes moveBackgroundImagePhone {
     0%,
     100% {
-        transform: translateX(0);
+        transform: translate3d(0, 0, 0);
     }
-    50% {
-        transform: translateX(-250%);
+    20% {
+        transform: translate3d(-625px, 0, 0);
+    }
+    75% {
+        transform: translate3d(850px, 0, 0);
     }
 }
 
+/* animation for sparks */
 @keyframes moveBackgroundFlame {
     0% {
         opacity: 1;
@@ -281,6 +334,7 @@
     }
 }
 
+/* animation for mouse icon */
 @keyframes moveMouseWheel {
     0%,
     25%,
@@ -296,21 +350,19 @@
     }
 }
 
+/* SCREEN ADAPTATION */
 @media (min-width: 2000px) {
     .intro__background {
         animation-name: none;
     }
+    .intro__background-flames-right {
+        bottom: 120px;
+    }
 }
-
-// @media (min-width: 1800px) {
-//     .intro__background-flames-right {
-//         left: 20px;
-//     }
-// }
 
 @media (min-width: 1500px) {
     .intro__background-flames-right {
-        left: 60%;
+        bottom: 100px;
     }
 }
 
@@ -325,18 +377,34 @@
         }
     }
 }
+/* tablet */
 @media (max-width: $tablet) {
     .intro__background {
         animation-name: moveBackgroundImageTablet;
-        animation-duration: 20s;
+        animation-duration: 40s;
     }
+
+    .intro__inner {
+        &::after {
+            background: radial-gradient(circle, rgba($light-red, 0.5) 0%, transparent 40%);
+            top: -30%;
+        }
+    }
+
     .intro__title {
         .title__text {
             display: block;
             line-height: 250%;
 
-            .title__bg {
-                transform: translateX(0) !important;
+            &:nth-child(1) {
+                .title__bg {
+                    transform: translateX(0);
+                }
+            }
+            &:nth-child(3) {
+                .title__bg {
+                    transform: translateX(1rem);
+                }
             }
         }
     }
@@ -353,13 +421,30 @@
         transform: none;
     }
 }
-
+/* mobile phone */
 @media (max-width: $phone) {
     .intro__background {
         animation-name: moveBackgroundImagePhone;
-        animation-duration: 30s;
+        animation-duration: 50s;
     }
-    .intro__background-flames-right {
-        left: 1000px;
+
+    .intro__inner {
+        &::after {
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba($light-red, 0.5) 0%, transparent 40%);
+            right: -60%;
+            top: -30%;
+        }
+    }
+    
+    .intro__title {
+        .title__text {
+            &:nth-child(3) {
+                .title__bg {
+                    transform: translateX(2rem);
+                }
+            }
+        }
     }
 }

@@ -6,9 +6,12 @@ const IntroSection = (container) => {
 
     window.addEventListener('DOMContentLoaded', () => {
         let audioState = 'paused';
+
         const musicTheme = document.querySelector('#musicTheme');
         const audioPlayBtn = document.querySelector('.intro__audio-play');
         const audioPlayIcon = audioPlayBtn.querySelector('.intro__audio-play-icon');
+
+        /* set an icon to the default state */
         audioPlayIcon.querySelector('#from_pause_to_play').beginElement();
         setTimeout(() => {
             audioPlayIcon.style.opacity = 1;
@@ -17,16 +20,63 @@ const IntroSection = (container) => {
         audioPlayBtn.addEventListener('click', () => {
             if (audioState === 'paused') {
                 audioState = 'playing';
+                /* animate icon */
                 audioPlayIcon.querySelector('#from_play_to_pause').beginElement();
+                /* play audio file */
                 musicTheme.play();
+                /* change button hover text */
                 audioPlayBtn.setAttribute('title', 'Pause the music theme');
             } else {
                 audioState = 'paused';
+                /* animate icon */
                 audioPlayIcon.querySelector('#from_pause_to_play').beginElement();
+                /* play audio file */
                 musicTheme.pause();
+                /* change button hover text */
                 audioPlayBtn.setAttribute('title', 'Play the music theme');
             }
         });
+
+        // const image = document.querySelector('.intro__background-mainpic');
+        // console.log(window.innerHeight);
+        // image.style.height = `${window.innerHeight}px`;
+
+        const introBlock = document.querySelector('.intro');
+        const introTitle = document.querySelectorAll('.intro__title .title__text');
+        const introSubtitle = document.querySelector('.intro__subtitle');
+
+        if ('IntersectionObserver' in window) {
+            const observerCallback = (entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        introTitle.forEach((title, index) => {
+                            setTimeout(() => {
+                                title.classList.add('show-title');
+                            }, index * 175);
+                        });
+                        setTimeout(() => {
+                            introSubtitle.style.transform = 'translateY(0)';
+                            introSubtitle.style.opacity = '1';
+                        }, 1000);
+                    }
+                });
+            };
+            const observerOptions = {
+                threshold: 0.25,
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+            // titleItems.forEach((item) => {
+            observer.observe(introBlock);
+            // });
+        } else {
+            introTitle.forEach((title, index) => {
+                setTimeout(() => {
+                    title.classList.add('show-title');
+                }, index * 175);
+            });
+        }
     });
 };
 

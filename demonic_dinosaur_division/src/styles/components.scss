@@ -6,6 +6,10 @@
     padding: 0 15px;
 }
 
+.no-scroll {
+    overflow: hidden !important;
+}
+
 /* section title */
 /* html code example:
 <div class="title">
@@ -78,7 +82,7 @@
     .container {
         padding: 0 5px;
     }
-    .title__bg{
+    .title__bg {
         font-size: 6rem;
     }
 }
