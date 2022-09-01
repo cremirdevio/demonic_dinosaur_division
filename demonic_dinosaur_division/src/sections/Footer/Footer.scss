@@ -3,20 +3,16 @@
 .footer {
     background-color: $dark-grey;
 }
+
 .footer__inner {
     padding-bottom: 3rem;
 }
 
+/* bottom page logo */
 .footer__logo {
     width: 8rem;
     margin: 0 auto -1rem;
     animation: blinkingLogo 5s linear infinite;
-}
-
-.footer__runningString {
-    font-family: $wavesun;
-    font-size: 3rem;
-    text-transform: uppercase;
 }
 
 .footer__copyright-wrapper {
@@ -55,6 +51,7 @@
     margin-right: 1.25rem;
 }
 
+/* FAQ link */
 .footer__copyright-link {
     text-decoration: underline;
     transition: 0.3s ease;
@@ -66,6 +63,7 @@
     }
 }
 
+/* ANIMATIONS */
 @keyframes blinkingLogo {
     0%,
     100% {

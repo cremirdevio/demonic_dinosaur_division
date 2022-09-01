@@ -3,12 +3,15 @@
 .formSection {
     background-color: $dark-grey;
 }
+
 .formSection__inner {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     padding-top: 7rem;
 }
+
+/* dino pictures */
 .formSection__background {
     grid-column: 1;
     grid-row: 1;
@@ -25,6 +28,8 @@
         }
     }
 }
+
+/* main content */
 .formSection__content {
     grid-column: 1;
     grid-row: 1;
@@ -54,6 +59,7 @@
     width: 40%;
     margin: 2.5rem auto 0;
 }
+/* common styles */
 .form__elem {
     margin-bottom: 0.75rem;
     padding: 1rem 1.5rem;
@@ -72,6 +78,7 @@
         text-transform: uppercase;
     }
 }
+/* input element */
 .form__input {
     color: #fffced;
     background-color: transparent;
@@ -82,6 +89,7 @@
         border-color: $light-red;
     }
 }
+/* submit button */
 .form__submit {
     color: $dark-grey;
     background-color: #fffced;
@@ -94,31 +102,36 @@
     }
 }
 
+/* SCREEN ADAPTATION */
+/* tablet */
 @media (max-width: $tablet) {
     .form {
         width: 60%;
     }
 }
-
+/* mobile phones */
 @media (max-width: $phone) {
     .formSection__title {
         margin-bottom: 0;
-        
+
         .title__bg {
             left: 3rem;
         }
     }
+
     .formSection__subtitle {
         max-width: 90%;
     }
-    .formSection__content{
+
+    .formSection__content {
         padding-bottom: 4rem;
     }
+    
     .form {
         width: 80%;
     }
     .form__input {
-        background-color: rgba($dark-grey, .5);
+        background-color: rgba($dark-grey, 0.5);
     }
 }
 

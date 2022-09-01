@@ -19,11 +19,14 @@
     }
 }
 
+/* wrapper for team members cards */
 .team__items-wrapper {
     display: flex;
     flex-wrap: wrap;
     margin-top: 2.5rem;
 }
+
+/* team member card */
 .team__item {
     width: 33.333%;
     height: fit-content;
@@ -44,11 +47,13 @@
         font-weight: 400;
     }
 }
+/* team member picture */
 .team__item-pic {
     margin-bottom: 1.5rem;
     border: none !important;
     border-radius: 0 !important;
 }
+/* team member name */
 .team__item-title {
     margin-bottom: 1.5rem;
     font-size: 1.1rem;
@@ -58,11 +63,13 @@
         display: block;
     }
 }
+
 .team__item-text {
     margin-bottom: 1.5rem;
     font-size: 0.8rem;
     line-height: 120%;
 }
+
 .team__item-link {
     display: flex;
     align-items: center;
@@ -82,6 +89,7 @@
     }
 }
 
+/* SCREEN ADAPTATION */
 @media (max-width: $smallScreen) {
     .team__items-wrapper {
         justify-content: center;
@@ -93,6 +101,7 @@
     }
 }
 
+/* mobile phones */
 @media (max-width: $phone) {
     .team__inner{
         padding: 6rem 0;
