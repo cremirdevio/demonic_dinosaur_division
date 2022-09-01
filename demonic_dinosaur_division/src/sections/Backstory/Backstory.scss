@@ -3,11 +3,13 @@
 .backstory {
     background-color: $dark-grey;
 }
+
 .backstory__inner {
     padding-top: 10rem;
     overflow: hidden;
     position: relative;
 
+    /* gradient background */
     &::after {
         content: '';
         width: 100%;
@@ -20,20 +22,25 @@
         z-index: 1;
     }
 }
+
 .backstory__title {
     .title__bg {
         &:nth-child(1) {
             left: -3rem;
         }
+
         &:nth-child(2) {
             left: 7rem;
         }
 
+        /* shadow's color */
         &::after {
             color: rgba($dark-grey, 1);
         }
     }
 }
+
+/* main content */
 .backstory__main {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -41,25 +48,27 @@
     position: relative;
     z-index: 2;
 }
+
 .backstory__gallery-wrapper {
     grid-column: 1 / span 2;
     grid-row: 1;
     margin-top: 7.5rem;
     border-radius: 8px;
     overflow: hidden;
-    // animation: moveGallery 25s linear infinite;
 }
+/* images gallery */
 .backstory__gallery {
     display: flex;
     flex-wrap: nowrap;
     width: calc((262px + 1rem) * 69);
     animation: moveGallery 180s linear 2s infinite;
-    // border: 1px solid #fff;
 
     &:hover {
         animation-play-state: paused !important;
     }
 }
+
+/* single gallery item */
 .backstory__gallery-link {
     flex-shrink: 0;
     margin-right: 1rem;
@@ -72,6 +81,7 @@
     border: none !important;
 }
 
+/* large dino picture */
 .backstory__dinopic {
     grid-column: 1;
     grid-row: 1 / span 2;
@@ -84,10 +94,12 @@
         border: none !important;
     }
 }
+
 .backstory__description {
     align-self: end;
     padding: 1rem 0 3rem 1rem;
 }
+
 .backstory__description-text {
     max-width: 90%;
     margin-bottom: 1.5rem;
@@ -106,6 +118,7 @@
         margin-top: 0.5rem;
     }
 }
+
 .backstory__description-title {
     margin-bottom: 0.5rem;
     color: #fffced;
@@ -121,6 +134,7 @@
     }
 }
 
+/* ANIMATIONS */
 @keyframes moveGallery {
     0%,
     100% {
@@ -131,6 +145,8 @@
     }
 }
 
+/* SCREEN ADAPTATION */
+/* tablet */
 @media (max-width: $tablet) {
     .backstory__inner {
         padding-top: 7.5rem;
@@ -142,7 +158,7 @@
         margin-top: 5rem;
     }
 }
-
+/* mobile phones */
 @media (max-width: $phone) {
     .backstory__main {
         grid-template-columns: 50% 90%;

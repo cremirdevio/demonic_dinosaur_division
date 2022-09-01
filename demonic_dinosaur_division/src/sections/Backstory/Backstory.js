@@ -20,7 +20,9 @@ const BackstorySection = (container) => {
                 /* initialize a gallery after processing the last element in the array */
                 if (nftPics.length - 1 === index) {
                     lightGallery(backstoryGallery);
+
                     backstoryGallery.addEventListener('lgBeforeOpen', () => {
+                        /* stop animation when user opens a gallery */
                         backstoryGallery.style.animationPlayState = 'paused';
                     });
                     backstoryGallery.addEventListener('lgBeforeClose', () => {
