@@ -9,6 +9,7 @@ const RoadmapSection = (container) => {
     container.innerHTML += roadmapHtml;
 
     window.addEventListener('DOMContentLoaded', () => {
+        /* carousel initialization */
         const swiper = new Swiper('.roadmap__swiper', {
             direction: 'vertical',
             slidesPerView: 1,
@@ -21,6 +22,7 @@ const RoadmapSection = (container) => {
             },
         });
 
+        /* add a custom scrollbar to each slider in case there's too much text */
         document.querySelectorAll('.swiper-slide').forEach((slide) => {
             const osInstance = OverlayScrollbars(slide, {});
         });

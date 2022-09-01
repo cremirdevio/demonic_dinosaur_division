@@ -3,27 +3,22 @@
 .roadmap {
     background-color: $light-red;
 }
+
 .roadmap__inner {
     display: grid;
     grid-template-columns: 50% 60%;
     padding-top: 5rem;
 }
+
+/* main content */
 .roadmap__main {
     grid-column: 1;
     padding-top: 6rem;
     padding-bottom: 1rem;
-    // border: 1px solid #000;
     position: relative;
     z-index: 2;
 }
-.roadmap__dino {
-    grid-column: 2;
-    align-self: end;
-    border: none !important;
-    position: relative;
-    left: -20%;
-    z-index: 1;
-}
+
 .roadmap__title {
     text-align: left;
 
@@ -33,20 +28,23 @@
         }
     }
 }
+
 .roadmap__subtitle {
     text-align: left;
 }
+
+/* slides carousel */
 .roadmap__swiper {
     height: 450px;
     margin-top: 1.5rem;
-    // padding: 0 2rem !important;
-    // border: 1px solid #000;
-    // background-color: #fff;
 }
 
+/* carousel pagination */
 .roadmap__swiper-pagination {
     width: 50%;
     left: 0;
+
+    /* pagination buttons */
     .swiper-pagination-bullet {
         width: 3px !important;
         height: 83px !important;
@@ -72,13 +70,8 @@
 
 .swiper-slide {
     width: 100% !important;
-    // height: 100%;
-    // padding-bottom: 5rem;
-    // border: 1px solid #000;
-    // overflow: auto;
     padding: 0 2.5rem;
     background: transparent;
-    // background-color: #fff;
 
     .os-scrollbar{
         width: 11px;
@@ -91,6 +84,8 @@
         cursor: pointer;
     }
 }
+
+/* slide number */
 .roadmap__swiper-number {
     color: $grey;
     @supports (-webkit-text-stroke: 1px #ffbeb4) {
@@ -105,8 +100,8 @@
     line-height: 1;
 }
 
+/* slide's text block */
 .roadmap__swiper-paragraph {
-    // border: 1px solid #000;
     margin-bottom: 1rem;
     color: #fffced;
     font-family: $friary;
@@ -118,36 +113,39 @@
     }
 }
 
+/* dino background picture */
+.roadmap__dino {
+    grid-column: 2;
+    align-self: end;
+    border: none !important;
+    position: relative;
+    left: -20%;
+    z-index: 1;
+}
+
+/* SCREEN ADAPTATION */
+/* tablet */
 @media (max-width: $tablet) {
     .roadmap__inner {
         grid-template-columns: 80% 60%;
+        padding-top: 0;
     }
     .roadmap__dino {
         left: -70%;
     }
-    .swiper-slide {
-        // padding-right: 10px;
-        &:hover {
-        }
-    }
 }
-
+/* mobile phones */
 @media (max-width: $phone) {
     .roadmap__inner {
         grid-template-columns: 90% 60%;
-        padding-top: 2rem;
     }
     .roadmap__dino {
         left: -90%;
     }
-    .roadmap__swiper {
-        // padding-right: 10% !important;
-    }
     .roadmap__swiper-pagination{
         .swiper-pagination-bullet{
+            /* make a buttons wider so it will be easier for user to tap on them */
             width: 9px !important;
         }
-    }
-    .swiper-slide {
     }
 }
