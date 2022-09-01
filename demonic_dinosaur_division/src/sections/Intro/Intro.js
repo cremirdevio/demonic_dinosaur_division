@@ -72,6 +72,16 @@ const IntroSection = (container) => {
                 }, index * 175);
             });
         }
+
+        /* show animated sparks when main image is loaded */
+        const introBgImage = document.querySelector('.intro__background-mainpic');
+        const introBgSparksLeft = document.querySelector('.intro__background-flames-left');
+        const introBgSparksRight = document.querySelector('.intro__background-flames-right');
+
+        introBgImage.addEventListener('load', () => {
+            introBgSparksLeft.style.display = 'block'
+            introBgSparksRight.style.display = 'block'
+        })
     });
 };
 

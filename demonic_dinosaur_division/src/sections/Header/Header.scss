@@ -1,6 +1,7 @@
 @import '../../styles/variables.scss';
 
 .header {
+    width: 100vw;
     background-color: rgba($dark-grey, 0.95);
 
     @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
@@ -129,7 +130,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        flex-wrap: nowrap;
+        max-width: 100vw;
         height: 100vh;
         padding: 1rem;
         transform: translateY(-100%);
@@ -149,9 +150,10 @@
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
+            transform: translateY(300%);
             transition: 0.5s ease-out;
             position: absolute;
-            top: 200vh;
+            bottom: 0;
             left: 0;
             z-index: 1;
         }
@@ -160,7 +162,7 @@
             transform: translateY(0);
 
             &::before {
-                top: 0;
+                transform: translateY(0);
             }
         }
     }

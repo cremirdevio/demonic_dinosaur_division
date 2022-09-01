@@ -141,6 +141,7 @@
     transform: translateX(-50%) scale(0.75);
     opacity: 0.25;
     transition: 0.5s ease-in-out;
+    border-radius: 50% !important;
     overflow: visible !important;
     position: relative;
     left: 50%;
@@ -149,6 +150,10 @@
         border-radius: 50%;
         position: relative;
         z-index: 2;
+    }
+
+    &::after{
+        display: none;
     }
 }
 

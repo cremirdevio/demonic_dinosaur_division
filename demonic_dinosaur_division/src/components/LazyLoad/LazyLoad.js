@@ -10,9 +10,11 @@ const LazyLoad = () => {
                     if (entry.isIntersecting) {
                         const image = entry.target;
                         const dataSrc = image.getAttribute('data-src');
-                        import(/* webpackMode: "eager" */ `../../images/lazyload/${dataSrc}`).then((src) => {
+                        import(/* webpackMode: "eager" */ `Src/images/lazyload/${dataSrc}`).then((src) => {
                             image.setAttribute('src', src.default);
-                            image.parentNode.classList.add('image-loaded');
+                            image.addEventListener('load', () => {
+                                image.parentNode.classList.add('image-loaded');
+                            });
                         });
                         imageObserver.unobserve(image);
                     }
@@ -37,7 +39,7 @@ const LazyLoad = () => {
                     lazyloadImages.forEach((img) => {
                         if (img.offsetTop < window.innerHeight + scrollTop) {
                             const dataSrc = img.getAttribute('data-src');
-                            import(/* webpackMode: "lazy" */ `../../images/lazyload/${dataSrc}`).then((src) => {
+                            import(/* webpackMode: "lazy" */ `Src/images/lazyload/${dataSrc}`).then((src) => {
                                 img.setAttribute('src', src.default);
                                 image.parentNode.classList.add('image-loaded');
                             });

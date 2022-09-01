@@ -16,8 +16,11 @@ import { FormSection } from 'Sections/Form/Form';
 import { FooterSection } from 'Sections/Footer/Footer';
 // components
 import LazyLoad from 'Components/LazyLoad/LazyLoad';
+import { PageLoader, HidePageLoader } from 'Components/PageLoader/PageLoader';
 
 const bodyContainer = document.body;
+
+PageLoader(bodyContainer);
 
 const mainContainer = (container) => {
     // root container
@@ -42,6 +45,7 @@ FooterSection(bodyContainer);
 LazyLoad();
 
 window.addEventListener('DOMContentLoaded', () => {
+    HidePageLoader(bodyContainer);
     /* use a custom scrollbar but only on desktop devices */
     if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         const osInstance = OverlayScrollbars(document.querySelector('body'), {});

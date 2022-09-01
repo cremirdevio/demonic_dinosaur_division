@@ -17,6 +17,17 @@
 html {
     font-size: 20px;
     scroll-behavior: smooth;
+    position: relative;
+}
+body {
+    position: relative;
+    overflow-x: hidden;
+}
+
+header,
+main,
+footer {
+    transition: opacity 0.3s ease;
 }
 
 @media (max-width: $tablet) {
