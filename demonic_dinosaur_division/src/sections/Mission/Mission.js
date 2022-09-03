@@ -32,24 +32,31 @@ const MissionSection = (container) => {
 
         /* animate parts of the chart */
         const missionChartParts = document.querySelectorAll('.mission__chart-pie');
+        const missionChartCollision = document.querySelectorAll('.mission__chart-collision-item');
 
-        const activeChartPie = (item) => {
+        const activeChartPie = (index) => {
             missionChartParts.forEach((chartPart) => {
                 /* remove the class name from an active element */
                 chartPart.classList.remove('mission__chart-pie-active');
             });
             /* add active class to the element that has been hovered on to */
-            item.classList.add('mission__chart-pie-active');
+            missionChartParts[index].classList.add('mission__chart-pie-active');
+            missionChartCollision[index].classList.add('mission__chart-pie-active');
         };
 
-        missionChartParts.forEach((item) => {
+        const disableChartPie = (index) => {
+            /* remove the class name from an active element */
+            missionChartCollision[index].classList.remove('mission__chart-pie-active');
+            missionChartParts[index].classList.remove('mission__chart-pie-active');
+        };
+
+        missionChartCollision.forEach((item, index) => {
             item.addEventListener('mouseenter', () => {
-                activeChartPie(item);
+                activeChartPie(index);
             });
 
-            /* remove the class name from an active element */
             item.addEventListener('mouseleave', () => {
-                item.classList.remove('mission__chart-pie-active');
+                disableChartPie(index);
             });
         });
 
@@ -57,15 +64,12 @@ const MissionSection = (container) => {
         const chartDescriptionItems = document.querySelectorAll('.distributions__chart-item');
 
         chartDescriptionItems.forEach((item, index) => {
-            const respectivelyChartPart = missionChartParts[index];
-
             item.addEventListener('mouseenter', () => {
-                activeChartPie(respectivelyChartPart);
+                activeChartPie(index);
             });
 
-            /* remove the class name from an active element */
             item.addEventListener('mouseleave', () => {
-                respectivelyChartPart.classList.remove('mission__chart-pie-active');
+                disableChartPie(index);
             });
         });
     });
