@@ -2,11 +2,11 @@
 
 .backstory {
     background-color: $dark-grey;
+    overflow: hidden;
 }
 
 .backstory__inner {
     padding-top: 10rem;
-    overflow: hidden;
     position: relative;
 
     /* gradient background */
@@ -87,6 +87,8 @@
 
     .image {
         display: block;
+        transform: scale(1.2);
+        left: -10%;
     }
 }
 

@@ -1,6 +1,8 @@
 @import '../../styles/variables.scss';
 
 .formSection {
+    width: 100vw;
+    overflow: hidden;
     background-color: $dark-grey;
 }
 
@@ -8,7 +10,7 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
-    padding-top: 7rem;
+    padding-top: 10rem;
 }
 
 /* dino pictures */
@@ -21,10 +23,15 @@
     z-index: 1;
 
     .formSection__dino {
-        width: 45%;
+        position: relative;
+
+        &:nth-child(1) {
+            left: -10%;
+        }
 
         &:nth-child(2) {
-            margin-top: -1rem;
+            margin-top: -2rem;
+            right: -10%;
         }
     }
 }
@@ -126,7 +133,7 @@
     .formSection__content {
         padding-bottom: 4rem;
     }
-    
+
     .form {
         width: 80%;
     }

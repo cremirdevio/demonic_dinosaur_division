@@ -74,14 +74,14 @@
     padding: 0 2.5rem;
     background: transparent;
 
-    .os-scrollbar{
+    .os-scrollbar {
         width: 11px;
     }
     .os-scrollbar-track,
-    .os-scrollbar-handle{
+    .os-scrollbar-handle {
         width: 9px;
     }
-    .os-scrollbar-handle{
+    .os-scrollbar-handle {
         cursor: pointer;
     }
 }
@@ -121,6 +121,24 @@
     position: relative;
     left: -20%;
     z-index: 1;
+
+    /* hide all of the images */
+    .image {
+        display: block;
+        opacity: 0;
+        transition: 0.3s ease;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+
+    /* show the active image */
+    .roadmap__dino-active {
+        opacity: 1;
+        position: relative;
+        z-index: 1;
+    }
 }
 
 /* SCREEN ADAPTATION */
@@ -142,8 +160,8 @@
     .roadmap__dino {
         left: -90%;
     }
-    .roadmap__swiper-pagination{
-        .swiper-pagination-bullet{
+    .roadmap__swiper-pagination {
+        .swiper-pagination-bullet {
             /* make a buttons wider so it will be easier for user to tap on them */
             width: 9px !important;
         }

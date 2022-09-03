@@ -63,6 +63,12 @@
     }
 }
 
+/* background running sctring */
+.footer__running-string {
+    transform: translateX(-50%);
+    left: 50%;
+}
+
 /* ANIMATIONS */
 @keyframes blinkingLogo {
     0%,

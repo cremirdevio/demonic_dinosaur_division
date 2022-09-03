@@ -26,6 +26,21 @@ const RoadmapSection = (container) => {
         document.querySelectorAll('.swiper-slide').forEach((slide) => {
             const osInstance = OverlayScrollbars(slide, {});
         });
+
+        /* toggle dino pictures */
+        const roadmapDinoPics = document.querySelectorAll('.roadmap__dino .image');
+
+        swiper.on('slideChange', (event) => {
+            const slide = event.activeIndex;
+
+            // hide all of the images
+            roadmapDinoPics.forEach((pic) => {
+                pic.classList.remove('roadmap__dino-active');
+            });
+
+            // show the active image
+            roadmapDinoPics[slide].classList.add('roadmap__dino-active');
+        });
     });
 };
 

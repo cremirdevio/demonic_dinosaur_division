@@ -17,3 +17,5 @@ Used libraries and services:
 3. 'Roadmap' section carousel - https://swiperjs.com/
 4. 'Backstory' section gallery - https://www.lightgalleryjs.com/
 5. Favicon generator - https://realfavicongenerator.net/
+
+If you wanna fork github repository with this project, this is my email - 45ryirtimd@gmail.com
