@@ -105,14 +105,22 @@
     grid-row: 1;
     margin: auto auto 0;
     z-index: 1;
+
+    &.image-loaded {
+        overflow: visible !important;
+    }
 }
 
 /* background running sctring */
 .mission__running-string {
     transform: translateX(-50%) translateY(-50%);
     position: absolute !important;
-    top: 50%;
+    top: 40%;
     left: 50%;
+
+    .running-string-text {
+        font-size: 10rem;
+    }
 }
 
 /* Total Revenue Distributions subsection */
