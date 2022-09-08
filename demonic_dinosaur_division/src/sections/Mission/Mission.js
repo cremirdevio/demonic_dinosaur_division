@@ -62,11 +62,15 @@ const MissionSection = (container) => {
 
         /* add an effect when user hovers over the description text */
         const chartDescriptionItems = [document.querySelectorAll('.distributions__chart-percentage'), document.querySelectorAll('.distributions__chart-text')];
-        console.log(chartDescriptionItems);
 
         chartDescriptionItems.map((arrItem) => {
             arrItem.forEach((item, index) => {
                 item.addEventListener('mouseenter', () => {
+                    activeChartPie(index);
+                });
+
+                /* touch devices fallback */
+                item.addEventListener('click', () => {
                     activeChartPie(index);
                 });
 
