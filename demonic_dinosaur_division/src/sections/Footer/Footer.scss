@@ -10,11 +10,17 @@
 
 /* bottom page logo */
 .footer__logo {
+    display: flex;
+    justify-content: center;
     width: 8rem;
     margin: 0 auto -1rem;
     animation: blinkingLogo 5s linear infinite;
+    transform: translateY(-150%);
+    position: relative;
+    z-index: 2;
 }
 
+/* copyright subsection */
 .footer__copyright-wrapper {
     display: flex;
     justify-content: center;
@@ -65,6 +71,7 @@
 
 /* background running sctring */
 .footer__running-string {
+    animation-name: moveRunningStringFooter;
     transform: translateX(-50%);
     left: 50%;
 }
@@ -77,5 +84,23 @@
     }
     50% {
         opacity: 0.3;
+    }
+}
+
+@keyframes moveRunningStringFooter {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        /* if there's a visual bug with strings connection, try to change this value */
+        transform: translate3d(-104.5%, 0, 0);
+    }
+}
+
+/* SCREEN ADAPTATION */
+/* mobile phones */
+@media (max-width: $phone) {
+    .footer__logo {
+        transform: translateY(-75%);
     }
 }

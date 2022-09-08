@@ -115,7 +115,7 @@
 .mission__running-string {
     transform: translateX(-50%) translateY(-50%);
     position: absolute !important;
-    top: 40%;
+    top: calc(40%);
     left: 50%;
 
     .running-string-text {
@@ -291,10 +291,12 @@
 /* wrapper for percentage and arrow */
 .distributions__chart-item-top {
     position: relative;
+    z-index: 1;
 }
 /* pointing arrow */
 .distributions__chart-line {
     position: absolute;
+    z-index: 1;
 }
 /* description text */
 .distributions__chart-text {
@@ -302,6 +304,8 @@
     font-family: $friary;
     font-size: 0.8rem;
     line-height: 120%;
+    position: relative;
+    z-index: 2;
 }
 
 /* positioning items */
