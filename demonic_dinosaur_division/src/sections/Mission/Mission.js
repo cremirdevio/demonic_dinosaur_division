@@ -1,5 +1,7 @@
 import missionHtml from './Mission.html';
 import './Mission.scss';
+// components
+import { textTypingEffect } from 'Components/TextTypingEffect/textTypingEffect';
 
 const MissionSection = (container) => {
     container.innerHTML += missionHtml;
@@ -79,6 +81,12 @@ const MissionSection = (container) => {
                 });
             });
         });
+
+        /* typewriter effect */
+        const typewriterText = 'Demonic Dinosaur Division NFT was built with a vision: to feed the hungry.';
+        const typewriterDestination = document.querySelector('.mission__subtitle');
+
+        textTypingEffect(typewriterText, typewriterDestination);
     });
 };
 

@@ -1,7 +1,10 @@
 import backstoryHtml from './Backstory.html';
 import './Backstory.scss';
+// libraries
 import lightGallery from 'lightgallery';
 import 'lightgallery/scss/lightgallery-bundle.scss';
+// components
+import { textTypingEffect } from 'Components/TextTypingEffect/textTypingEffect';
 
 const BackstorySection = (container) => {
     container.innerHTML += backstoryHtml;
@@ -10,6 +13,7 @@ const BackstorySection = (container) => {
         const backstoryGallery = document.querySelector('.backstory__gallery');
         const nftPics = document.querySelectorAll('.backstory__gallery-link');
 
+        /* add link address */
         nftPics.forEach((linkEl, index) => {
             const picLink = linkEl.getAttribute('href');
 
@@ -31,6 +35,12 @@ const BackstorySection = (container) => {
                 }
             });
         });
+
+        /* typewriter effect */
+        const typewriterText = 'From the blazing depths of a realm known as hell, gargantuan, scaly, infernal creatures have emerged.';
+        const typewriterDestination = document.querySelector('.backstory__subtitle');
+
+        textTypingEffect(typewriterText, typewriterDestination);
     });
 };
 

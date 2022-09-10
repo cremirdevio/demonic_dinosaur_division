@@ -1,9 +1,12 @@
 import roadmapHtml from './Roadmap.html';
 import './Roadmap.scss';
+// libraries
 import Swiper from 'swiper/bundle';
 import 'swiper/css/bundle';
 import 'overlayscrollbars/overlayscrollbars.css';
 import { OverlayScrollbars } from 'overlayscrollbars';
+// components
+import { textTypingEffect } from 'Components/TextTypingEffect/textTypingEffect';
 
 const RoadmapSection = (container) => {
     container.innerHTML += roadmapHtml;
@@ -41,6 +44,12 @@ const RoadmapSection = (container) => {
             // show the active image
             roadmapDinoPics[slide].classList.add('roadmap__dino-active');
         });
+
+        /* typewriter effect */
+        const typewriterText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
+        const typewriterDestination = document.querySelector('.roadmap__subtitle');
+
+        textTypingEffect(typewriterText, typewriterDestination);
     });
 };
 

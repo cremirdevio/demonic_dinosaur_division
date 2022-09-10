@@ -36,31 +36,32 @@
                 demolishing the blockchain soon
             </h3>
             <div class="intro__bottom">
-                <div class="intro__audio">
-                    <button class="intro__audio-play" title="Play the music theme">
-                        <img src="./intro-img/intro-play.png" alt="play button">
-                        <svg width="52" height="52" viewBox="0 0 104 104" class='intro__audio-play-icon'>
-                            <line id='line1' x1="38" y1="30" x2="38" y2="70"
-                                style="stroke-width:4px;stroke:white;stroke-linecap: round;" />
-                            <path id='line2' d="M 66 30 L 66 50 L 66 70" rx="10" ry="10"
-                                style="stroke-width:4px;stroke:white;fill:white;stroke-linejoin: round;stroke-linecap: round;">
-                                <animate attributeName="d" dur="300ms" from="M 66 30 L 66 50 L 66 70"
-                                    to="M 38 30 L 70 50 L 38 70" begin="indefinite" fill="freeze"
-                                    id="from_pause_to_play" />
-                            </path>
-                            <animate xlink:href="#line2" attributeName="d" dur="300ms" from="M 38 30 L 70 50 L 38 70"
-                                to="M 66 30 L 66 50 L 66 70" fill="freeze" id="from_play_to_pause" begin="indefinite" />
-                        </svg>
-                        <audio src="./intro-audio/192 kBit_s DDD NFT Soundtrack 1.m4a" id="musicTheme" preload="none"
-                            loop></audio>
-                    </button>
-                </div>
                 <div class="intro__scroll">
                     <img src="./intro-img/intro-mouse.svg" alt="">
                     <img src="./intro-img/intro-mouse-wheel.svg" alt="">
                     <span class="intro__scroll-text">scroll down</span>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="intro__audio">
+        <div class="container">
+            <button class="intro__audio-play" title="Play the music theme">
+                <img src="./intro-img/intro-play.png" alt="play button">
+                <svg width="52" height="52" viewBox="0 0 104 104" class='intro__audio-play-icon'>
+                    <line id='line1' x1="38" y1="30" x2="38" y2="70"
+                        style="stroke-width:4px;stroke:white;stroke-linecap: round;" />
+                    <path id='line2' d="M 66 30 L 66 50 L 66 70" rx="10" ry="10"
+                        style="stroke-width:4px;stroke:white;fill:white;stroke-linejoin: round;stroke-linecap: round;">
+                        <animate attributeName="d" dur="300ms" from="M 66 30 L 66 50 L 66 70"
+                            to="M 38 30 L 70 50 L 38 70" begin="indefinite" fill="freeze" id="from_pause_to_play" />
+                    </path>
+                    <animate xlink:href="#line2" attributeName="d" dur="300ms" from="M 38 30 L 70 50 L 38 70"
+                        to="M 66 30 L 66 50 L 66 70" fill="freeze" id="from_play_to_pause" begin="indefinite" />
+                </svg>
+                <audio src="./intro-audio/192 kBit_s DDD NFT Soundtrack 1.m4a" id="musicTheme" preload="none"
+                    loop></audio>
+            </button>
         </div>
     </div>
 </section>

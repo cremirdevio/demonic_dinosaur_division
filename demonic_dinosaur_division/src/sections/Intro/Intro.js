@@ -73,15 +73,15 @@ const IntroSection = (container) => {
             });
         }
 
-        /* show animated sparks when main image is loaded */
+        /* show animated sparks when the main image is loaded */
         const introBgImage = document.querySelector('.intro__background-mainpic');
         const introBgSparksLeft = document.querySelector('.intro__background-flames-left');
         const introBgSparksRight = document.querySelector('.intro__background-flames-right');
 
         introBgImage.addEventListener('load', () => {
-            introBgSparksLeft.style.display = 'block'
-            introBgSparksRight.style.display = 'block'
-        })
+            introBgSparksLeft.style.display = 'block';
+            introBgSparksRight.style.display = 'block';
+        });
     });
 };
 

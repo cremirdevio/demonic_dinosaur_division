@@ -223,12 +223,14 @@
     transform: translateY(-300%);
     opacity: 0;
     transition: 1s ease-out;
+    position: relative;
+    z-index: 2;
 }
 
 /* wrapper for the mouse icon and button to play the music theme */
 .intro__bottom {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     width: 100%;
@@ -239,6 +241,21 @@
 }
 
 /* button to play the music theme */
+.intro__audio{
+    width: 100%;
+    pointer-events: none;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 10;
+
+    .container{
+        display: flex;
+        align-items: flex-end;
+        padding-bottom: 1rem;
+    }
+}
+
 .intro__audio-play {
     display: block;
     width: 8rem;
@@ -246,8 +263,10 @@
     cursor: pointer;
     transition: 0.3s ease;
     transform-origin: bottom left;
-    opacity: 0.8;
+    opacity: 0.95;
+    pointer-events: auto;
     position: relative;
+    z-index: 100;
 
     &:hover {
         opacity: 1;
@@ -272,8 +291,6 @@
 
 /* mouse icon */
 .intro__scroll {
-    margin-right: 50%;
-    transform: translateX(50%);
     text-align: center;
     position: relative;
 
@@ -485,10 +502,6 @@
     .intro__bottom {
         justify-content: center;
     }
-    .intro__audio-play {
-        margin: 0 auto 2rem;
-        transform-origin: bottom;
-    }
     .intro__scroll {
         width: 100%;
         margin-right: 0;
@@ -518,5 +531,9 @@
                 font-size: 5.5rem;
             }
         }
+    }
+
+    .intro__audio{
+        bottom: 1rem;
     }
 }

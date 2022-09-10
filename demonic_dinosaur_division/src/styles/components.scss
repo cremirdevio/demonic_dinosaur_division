@@ -70,6 +70,10 @@
     font-weight: 400;
     line-height: 120%;
     text-align: center;
+
+    span {
+        all: inherit;
+    }
 }
 
 /* infinite string */
