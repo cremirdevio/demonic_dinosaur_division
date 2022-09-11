@@ -34,33 +34,28 @@ const FormSection = (container) => {
       console.log(fullname, email);
 
       // Send Post Request to API
-      // const res = await fetch("http://localhost:8000/subscribe", {
-      //   // body: JSON.stringify({
-      //   //   email,
-      //   //   fullname
-      //   // }),
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   // method: "POST",
-      // });
+      const res = await fetch("http://localhost:8000/newsletter/subscribe", {
+        body: JSON.stringify({
+          email,
+          fullname
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+      });
 
-      // console.log(await res.json());
+      const body = await res.json();
+      if (!res.ok) {
+        console.log(body.message);
+        return;
+      }
 
-      // if (error) {
-      //   // 4. If there was an error, update the message in state.
-      //   setMessage(error);
+      console.log(body);
 
-      //   return;
-      // }
-
-      fetch("http:/localhost:8000/movies/json")
-        .then((response) => response.json())
-        .then((data) => console.log(data))
-        .catch(console.log)
-      // console.log(res);
-      // inputEl.current.value = "";
-      // setMessage("Success! 🎉 You are now subscribed to the newsletter.");
+      // Clear input
+      nameInput.value = '';
+      emailInput.value = '';
     });
   });
 };
