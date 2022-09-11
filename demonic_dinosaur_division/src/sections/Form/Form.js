@@ -18,11 +18,16 @@ const FormSection = (container) => {
         const nameInput = document.querySelector('.newsletter-form input[name="name"]');
         const emailInput = document.querySelector('.newsletter-form input[name="email"]');
 
-        // You can write code for validating the input here
-
+        
         newsletterForm.addEventListener('submit', function(event) {
           event.preventDefault();
-          console.log(nameInput.value, emailInput.value);
+
+          // You can write code for validating the input here
+          let fullName = nameInput.value;
+          let email = emailInput.value;
+          console.log(fullName, email);
+
+          // Send Post Request to API
         });
     });
 };
