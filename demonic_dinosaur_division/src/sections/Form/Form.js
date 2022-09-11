@@ -12,6 +12,18 @@ const FormSection = (container) => {
         const typewriterDestination = document.querySelector('.formSection__subtitle');
 
         textTypingEffect(typewriterText, typewriterDestination);
+
+        // Newsletter Form Implementation
+        const newsletterForm = document.querySelector('.newsletter-form');
+        const nameInput = document.querySelector('.newsletter-form input[name="name"]');
+        const emailInput = document.querySelector('.newsletter-form input[name="email"]');
+
+        // You can write code for validating the input here
+
+        newsletterForm.addEventListener('submit', function(event) {
+          event.preventDefault();
+          console.log(nameInput.value, emailInput.value);
+        });
     });
 };
 
