@@ -1,0 +1,47 @@
+.alert{
+  width:50%;
+  margin:20px auto;
+  padding:30px;
+  position:relative;
+  border-radius:5px;
+  box-shadow:0 0 15px 5px #222;
+
+  position: fixed;
+  top: 0;
+  right: 20px;
+  z-index: 99;
+  opacity: 0;
+  transition: 2s ease;
+
+  &__close{
+    line-height: 1;
+    position:absolute;
+    width:30px;
+    height:30px;
+    opacity:0.5;
+    border-width:1px;
+    border-style:solid;
+    border-radius:50%;
+    right:15px;
+    top:25px;
+    text-align:center;
+    font-size:1.3em;
+    cursor:pointer;
+  }
+}
+
+@mixin alert($name,$bgColor){
+  $accentColor:darken($bgColor,50);
+  .#{$name}{
+    background-color:#{$bgColor};
+    border-left:5px solid $accentColor;
+    .close{
+      border-color:$accentColor;
+      color:$accentColor;
+    }
+  }
+}
+@include alert(alert--simple,#ebebeb);
+@include alert(alert--success,#a8f0c6);
+@include alert(alert--danger,#f7a7a3);
+@include alert(alert--warning,#ffd48a);
