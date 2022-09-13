@@ -49,6 +49,7 @@
         "xml-loader": "^1.2.1"
     },
     "dependencies": {
+        "animated-scroll-to": "^2.3.0",
         "hamburgers": "^1.2.1",
         "lightgallery": "^2.6.0",
         "overlayscrollbars": "^2.0.0-beta.1",

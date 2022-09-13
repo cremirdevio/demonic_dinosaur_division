@@ -92,30 +92,13 @@
     }
 }
 
+/* section with a description text */
 .backstory__description {
     align-self: end;
-    padding: 1rem 0 3rem 1rem;
+    padding: 1rem 0 2rem 1rem;
 }
 
-.backstory__description-text {
-    max-width: 90%;
-    margin-bottom: 1.5rem;
-    color: #fffced;
-    font-family: $friary;
-    font-size: 0.8rem;
-    line-height: 120%;
-
-    &:last-child {
-        margin-bottom: 0;
-    }
-
-    span {
-        all: inherit;
-        display: block;
-        margin-top: 0.5rem;
-    }
-}
-
+/* big letters title */
 .backstory__description-title {
     margin-bottom: 0.5rem;
     color: #fffced;
@@ -131,10 +114,49 @@
     }
 }
 
+.backstory__description-text {
+    max-width: 90%;
+    margin-bottom: 1.5rem;
+    color: #fffced;
+    font-family: $friary;
+    font-size: 0.8rem;
+    line-height: 120%;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    /* wrapper for the text and the line */
+    .backstory__description-animation {
+        all: inherit;
+        display: block;
+        position: relative;
+
+        /* text with a moving line below it */
+        .backstory__description-animation-text {
+            all: inherit;
+            display: inline-block;
+            width: fit-content;
+            margin-top: 2rem;
+            font-size: 1rem;
+        }
+
+        /* moving red line */
+        .backstory__description-animation-line {
+            width: 2rem;
+            height: 5px;
+            background-color: $light-red;
+            position: absolute;
+            left: 0;
+            bottom: -15px;
+            z-index: 1;
+        }
+    }
+}
+
 /* ANIMATIONS */
 @keyframes moveGallery {
-    0%,
-    100% {
+    0% {
         transform: translateX(0);
     }
     50% {

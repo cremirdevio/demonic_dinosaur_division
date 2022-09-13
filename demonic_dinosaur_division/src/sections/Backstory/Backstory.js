@@ -23,7 +23,9 @@ const BackstorySection = (container) => {
 
                 /* initialize a gallery after processing the last element in the array */
                 if (nftPics.length - 1 === index) {
-                    lightGallery(backstoryGallery);
+                    lightGallery(backstoryGallery, {
+                        download: false,
+                    });
 
                     backstoryGallery.addEventListener('lgBeforeOpen', () => {
                         /* stop animation when user opens a gallery */
@@ -41,6 +43,51 @@ const BackstorySection = (container) => {
         const typewriterDestination = document.querySelector('.backstory__subtitle');
 
         textTypingEffect(typewriterText, typewriterDestination);
+
+        /* 'Unleash your inner demon.' animation */
+
+        /* we need it to get text node width */
+        const animatedText = document.querySelector('.backstory__description-animation-text');
+        /* a line that will be animated */
+        const animatedLine = document.querySelector('.backstory__description-animation-line');
+
+        /* this function lets use @keyframes into JS */
+        let dynamicStyles = null;
+
+        const addAnimation = (body) => {
+            if (!dynamicStyles) {
+                dynamicStyles = document.createElement('style');
+                dynamicStyles.type = 'text/css';
+                document.head.appendChild(dynamicStyles);
+            }
+
+            dynamicStyles.sheet.insertRule(body, dynamicStyles.length);
+        };
+
+        /* calculate text node width and add the animated line */
+        const animationBody = () => {
+            const animatedTextWidth = animatedText.getBoundingClientRect().width;
+
+            addAnimation(`
+                @keyframes moveLine {
+                    0%,
+                    100% {
+                        transform: translate3d(0px, 0, 0) scale(1);
+                    }
+                    25%,
+                    75% {
+                        transform: translate3d(${animatedTextWidth / 2}px, 0, 0) scale(2.5, 1);
+                    }
+                    50% {
+                        transform: translate3d(${animatedTextWidth - 10}px, 0, 0) scale(1);
+                    }
+                }        
+            `);
+
+            animatedLine.style.animation = 'moveLine 5s linear infinite';
+        };
+
+        animationBody();
     });
 };
 
