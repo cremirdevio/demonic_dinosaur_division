@@ -54,7 +54,7 @@ const handleFormSubmit = async (event) => {
     const body = await res.json();
     if (!res.ok) {
       // console.log(body.message);
-      Alert("success", body.message);
+      Alert("danger", body.message);
       return;
     }
     Alert("success", body.message);

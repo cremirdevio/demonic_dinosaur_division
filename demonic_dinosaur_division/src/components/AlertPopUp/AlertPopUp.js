@@ -1,11 +1,23 @@
 import AlertHtml from "./AlertPopUp.html";
 import "./AlertPopUp.scss";
 
+const iconArray = {
+  successIcon: '☑︎',
+  dangerIcon: '𐄂',
+  infoIcon: 'ℹ︎',
+  warningIcon: '⚠︎'
+};
+
+// type = 'success' | 'danger' | 'info" | 'warning'
 const Alert = (type = "success", message) => {
+
   const alertDiv = document.createElement("div");
   alertDiv.classList.add("alert", "alert--simple");
   alertDiv.innerHTML = AlertHtml;
   document.body.append(alertDiv);
+
+  // Add icon
+  document.querySelector(`.alert .alert__icon`).innerText = iconArray[`${type}Icon`];
 
   document
     .querySelector(`.alert`)
