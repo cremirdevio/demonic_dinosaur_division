@@ -20,7 +20,6 @@ const FormSection = (container) => {
     // Newsletter Form Handling
     const newsletterForm = document.querySelector(".newsletter-form");
     newsletterForm.addEventListener("submit", handleFormSubmit);
-
   });
 };
 
@@ -33,23 +32,31 @@ const handleFormSubmit = async (event) => {
   const emailInput = document.querySelector(
     '.newsletter-form input[name="email"]'
   );
+  const submitButton = document.querySelector(".newsletter-form .form__submit");
+
   // You can write code for validating the input here
   let fullname = nameInput.value;
   let email = emailInput.value;
 
+  // Disable submit button
+  submitButton.disabled = true;
+
   // Send Post Request to API
   try {
-    const res = await fetch(`${process.env.API_BASE_URL}/newsletter/subscribe`, {
-      // credentials: 'include',
-      body: JSON.stringify({
-        email,
-        fullname,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-    });
+    const res = await fetch(
+      `${process.env.API_BASE_URL}/newsletter/subscribe`,
+      {
+        // credentials: 'include',
+        body: JSON.stringify({
+          email,
+          fullname,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+      }
+    );
 
     const body = await res.json();
     if (!res.ok) {
@@ -63,8 +70,11 @@ const handleFormSubmit = async (event) => {
     nameInput.value = "";
     emailInput.value = "";
   } catch (error) {
-    console.log(error)
+    console.log(error);
     Alert("danger", "Something went wrong");
+  } finally {
+    // Enable submit button
+    submitButton.disabled = false;
   }
 };
 
