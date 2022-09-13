@@ -36,11 +36,11 @@ const handleFormSubmit = async (event) => {
   // You can write code for validating the input here
   let fullname = nameInput.value;
   let email = emailInput.value;
-  console.log(fullname, email);
 
   // Send Post Request to API
   try {
-    const res = await fetch("http://localhost:8000/newsletter/subscribe", {
+    const res = await fetch(`${process.env.API_BASE_URL}/newsletter/subscribe`, {
+      // credentials: 'include',
       body: JSON.stringify({
         email,
         fullname,
@@ -57,13 +57,13 @@ const handleFormSubmit = async (event) => {
       Alert("success", body.message);
       return;
     }
-    console.log(body);
-    Alert("success", "body.message");
+    Alert("success", body.message);
 
     // Clear input
     nameInput.value = "";
     emailInput.value = "";
   } catch (error) {
+    console.log(error)
     Alert("danger", "Something went wrong");
   }
 };
