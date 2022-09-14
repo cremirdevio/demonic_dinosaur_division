@@ -23,6 +23,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 1.25rem 0;
+    position: relative;
 }
 
 .header__logo {
@@ -30,6 +31,11 @@
     margin-right: 1rem;
     position: relative;
     z-index: 1;
+}
+
+/* information about which section is currently in user's viewport */
+.header__menu-activeSessionInfo {
+    display: none;
 }
 
 /* navigation burger button */
@@ -82,12 +88,9 @@
     font-size: 0.7rem;
     line-height: 120%;
     transition: 0.3s ease;
+    outline: none;
 
-    /* path for svg icons */
-    path {
-        transition: 0.3s ease;
-    }
-
+    /* secondary styles link */
     &.header__nav-link-secondary {
         background-color: $light-red;
 
@@ -96,23 +99,39 @@
         }
     }
 
-    &:hover {
+    /* transition for svg icons */
+    path {
+        transition: 0.3s ease;
+    }
+
+    /* add active styles */
+    &:hover,
+    &:focus,
+    &.link-active {
         color: $black;
         background-color: #fff;
 
+        /* change SVG icons color */
         .header__nav-link-svg path {
             fill: $black;
         }
 
         .header__nav-link-opensea {
+            /* circle background color */
             path:nth-child(1) {
                 fill: $black;
             }
+            /* boat color */
             path:nth-child(2),
             path:nth-child(3) {
                 fill: $light-red;
             }
         }
+    }
+
+    /* add a "border" on focus */
+    &:focus {
+        box-shadow: 0 0 0 3px $red;
     }
 }
 
@@ -120,8 +139,24 @@
 /* tablet */
 @media (max-width: $tablet) {
     .header__inner {
-        padding: 0.75rem 0;
+        padding: 0.25rem 0;
     }
+
+    /* information about which section is currently in user's viewport */
+    .header__menu-activeSessionInfo {
+        display: block;
+        color: #fff;
+        font-family: $friary;
+        font-size: 0.9rem;
+        line-height: 120%;
+        transform: translate(-50%, -50%);
+        transition: 0.3s ease;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 1;
+    }
+
     .header__menu-btn {
         display: inline-block !important;
     }
