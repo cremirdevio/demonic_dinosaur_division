@@ -6,7 +6,7 @@ const InitiateConnection = () => {
   window.Buffer = require("buffer/").Buffer;
 
   // Create a web3Connector
-  web3Connector = new new Web3Modal({
+  web3Connector = new Web3Modal({
     network: "mainnet", // optional
     cacheProvider: true, // optional
     providerOptions: getProviders(), // required

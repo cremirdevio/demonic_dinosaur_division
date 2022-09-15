@@ -1,6 +1,6 @@
 // devtools
 const path = require("path");
-const { webpack } = require("webpack");
+const { webpack, ProvidePlugin } = require("webpack");
 // html
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 // dotenv
@@ -47,6 +47,9 @@ module.exports = {
   },
   plugins: [
     new Dotenv(),
+    new ProvidePlugin({
+      Buffer: ["buffer", "Buffer"],
+    }),
     new HtmlWebpackPlugin({
       template: "./src/index.html",
     }),
@@ -56,6 +59,13 @@ module.exports = {
       Src: path.resolve(__dirname, "src"),
       Components: path.resolve(__dirname, "src/components"),
       Sections: path.resolve(__dirname, "src/sections"),
+    },
+    fallback: {
+      stream: require.resolve("stream-browserify"),
+      https: require.resolve("https-browserify"),
+      os: require.resolve("os-browserify/browser"),
+      http: require.resolve("stream-http"),
+      buffer: require.resolve("buffer"),
     },
   },
 };
