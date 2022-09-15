@@ -3,7 +3,7 @@ import "./Header.scss";
 // libraries
 import "hamburgers/_sass/hamburgers/hamburgers.scss";
 import animateScrollTo from "animated-scroll-to";
-import { connector, connectWallet, createConnection, InitiateConnection, killConnection } from "./WalletConnector";
+import { connectWallet, disconnectWallet, InitiateConnection, provider } from "./WalletConnector";
 
 const HeaderSection = (container) => {
   container.innerHTML += headerHtml;
