@@ -1,63 +1,32 @@
-import WalletConnect from "@walletconnect/client";
-import QRCodeModal from "@walletconnect/qrcode-modal";
+import WalletConnectProvider from "@walletconnect/web3-provider";
 
-let connector = null;
+let web3Connector = null;
 
 const InitiateConnection = () => {
-  window.Buffer = require('buffer/').Buffer;
+  window.Buffer = require("buffer/").Buffer;
 
-  // Create a connector
-  connector = new WalletConnect({
-    bridge: "https://bridge.walletconnect.org", // Required
-    qrcodeModal: QRCodeModal,
-  });
+  // Create a web3Connector
+  web3Connector = new new Web3Modal({
+    network: "mainnet", // optional
+    cacheProvider: true, // optional
+    providerOptions: getProviders(), // required
+  })();
 
-  // Subscribe to connection events
-  connector.on("connect", (error, payload) => {
-    if (error) {
-      throw error;
-    }
-
-    // Get provided accounts and chainId
-    const { accounts, chainId } = payload.params[0];
-    // console.log(accounts, chainId);
-    console.log("connection established");
-  });
-
-  connector.on("session_update", (error, payload) => {
-    if (error) {
-      throw error;
-    }
-
-    // Get updated accounts and chainId
-    const { accounts, chainId } = payload.params[0];
-  });
-
-  connector.on("disconnect", (error, payload) => {
-    if (error) {
-      throw error;
-    }
-
-    // Delete connector
-    console.log("connection killed");
-  });
-  
   return connector;
 };
 
-const createConnection = () => {
+const getProviders = () => {
+  const infuraId = "";
+  const providerOptions = {
+    walletconnect: {
+      package: WalletConnectProvider,
+      options: {
+        infuraId,
+      },
+    },
+  };
 
-  // Check if connection is already established
-  if (!connector.connected) {
-    // create new session
-    connector.createSession();
-  }
-}
+  return providerOptions;
+};
 
-const killConnection = () => {
-  if (connector) {
-    connector.killSession();
-  }
-}
-
-export { InitiateConnection, createConnection, killConnection, connector };
+export { InitiateConnection };

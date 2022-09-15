@@ -122,11 +122,7 @@ const HeaderSection = (container) => {
     InitiateConnection();
     const connectWalletBtn = document.querySelector("#connect-wallet");
     connectWalletBtn.addEventListener("click", () => {
-      console.log(connector);
-      if (connector) {
-        if (connector.connected) killConnection();
-        else createConnection();
-      }
+      
     });
   });
 };
