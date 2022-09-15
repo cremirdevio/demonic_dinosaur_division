@@ -3,7 +3,7 @@ import "./Header.scss";
 // libraries
 import "hamburgers/_sass/hamburgers/hamburgers.scss";
 import animateScrollTo from "animated-scroll-to";
-import { connector, createConnection, InitiateConnection, killConnection } from "./WalletConnector";
+import { connector, connectWallet, createConnection, InitiateConnection, killConnection } from "./WalletConnector";
 
 const HeaderSection = (container) => {
   container.innerHTML += headerHtml;
@@ -122,7 +122,7 @@ const HeaderSection = (container) => {
     InitiateConnection();
     const connectWalletBtn = document.querySelector("#connect-wallet");
     connectWalletBtn.addEventListener("click", () => {
-      
+      connectWallet();
     });
   });
 };
