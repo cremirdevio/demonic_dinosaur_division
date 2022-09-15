@@ -17,6 +17,7 @@ import { FooterSection } from 'Sections/Footer/Footer';
 // components
 import LazyLoad from 'Components/LazyLoad/LazyLoad';
 import { PageLoader, HidePageLoader } from 'Components/PageLoader/PageLoader';
+import { Alert } from './components/AlertPopUp/AlertPopUp';
 
 const bodyContainer = document.body;
 

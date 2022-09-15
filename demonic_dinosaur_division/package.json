@@ -29,6 +29,7 @@
         "css-loader": "^6.7.1",
         "css-minimizer-webpack-plugin": "^3.4.1",
         "csv-loader": "^3.0.3",
+        "dotenv-webpack": "^8.0.1",
         "html-loader": "^3.1.0",
         "html-webpack-plugin": "^5.5.0",
         "image-minimizer-webpack-plugin": "^3.2.3",
@@ -49,6 +50,7 @@
         "xml-loader": "^1.2.1"
     },
     "dependencies": {
+        "@mailchimp/mailchimp_marketing": "^3.0.78",
         "animated-scroll-to": "^2.3.0",
         "hamburgers": "^1.2.1",
         "lightgallery": "^2.6.0",

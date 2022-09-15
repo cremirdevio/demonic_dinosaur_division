@@ -104,8 +104,13 @@
     cursor: pointer;
 
     &:hover,
+    &:disabled,
     &:focus {
         background-color: $light-red;
+    }
+
+    &:disabled {
+        opacity: 0.2;
     }
 }
 
