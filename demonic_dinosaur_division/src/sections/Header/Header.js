@@ -11,6 +11,7 @@ import {
   selectedAccount,
 } from "./WalletConnector";
 import { Alert } from "../../components/AlertPopUp/AlertPopUp";
+import { truncateAddress } from "../../utils";
 
 const HeaderSection = (container) => {
   container.innerHTML += headerHtml;
@@ -144,8 +145,8 @@ const HeaderSection = (container) => {
 
       if (provider.connected) {
         connectWalletBtn.style.display = "none";
-        walletInfoBtn.style.display = "block";
-        walletInfoAddressInput.innerText = selectedAccount;
+        walletInfoBtn.style.display = "flex";
+        walletInfoAddressInput.innerText = truncateAddress(selectedAccount);
       }
     };
 
