@@ -3,7 +3,14 @@ import "./Header.scss";
 // libraries
 import "hamburgers/_sass/hamburgers/hamburgers.scss";
 import animateScrollTo from "animated-scroll-to";
-import { connectWallet, disconnectWallet, InitiateConnection, provider } from "./WalletConnector";
+import {
+  connectWallet,
+  disconnectWallet,
+  InitiateConnection,
+  provider,
+  selectedAccount,
+} from "./WalletConnector";
+import { Alert } from "../../components/AlertPopUp/AlertPopUp";
 
 const HeaderSection = (container) => {
   container.innerHTML += headerHtml;
@@ -118,12 +125,31 @@ const HeaderSection = (container) => {
       }
     });
 
-    /* when connect wallet is click */
-    InitiateConnection();
-    const connectWalletBtn = document.querySelector("#connect-wallet");
-    connectWalletBtn.addEventListener("click", () => {
-      connectWallet();
-    });
+    const run = async () => {
+      /* when connect wallet is click */
+      await InitiateConnection();
+
+      const walletInfoBtn = document.querySelector("#wallet-info");
+      const walletInfoAddressInput = document.querySelector("#wallet-info #address");
+      walletInfoBtn.style.display = "none";
+      walletInfoBtn.addEventListener("click", () => {
+        Alert("success", "Love is not enough");
+        disconnectWallet();
+      });
+
+      const connectWalletBtn = document.querySelector("#connect-wallet");
+      connectWalletBtn.addEventListener("click", () => {
+        connectWallet();
+      });
+
+      if (provider.connected) {
+        connectWalletBtn.style.display = "none";
+        walletInfoBtn.style.display = "block";
+        walletInfoAddressInput.innerText = selectedAccount;
+      }
+    };
+
+    run();
   });
 };
 

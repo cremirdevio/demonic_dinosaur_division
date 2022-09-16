@@ -1,6 +1,6 @@
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import Web3 from "web3";
-import Web3Modal, { getInjectedProvider } from "web3modal";
+import Web3Modal from "web3modal";
 import CoinbaseWalletSDK from "@coinbase/wallet-sdk";
 import { Alert } from "../../components/AlertPopUp/AlertPopUp";
 
@@ -24,7 +24,7 @@ const InitiateConnection = async () => {
     providerOptions: getProviders(),
   });
 
-  if (web3Connector.cachedProvider) connectWallet();
+  if (web3Connector.cachedProvider) await connectWallet();
 
   return web3Connector;
 };
@@ -60,12 +60,14 @@ const connectWallet = async () => {
     // const web3library = new Web3(provider);
 
     subscribeProvider(provider);
+    fetchAccountData();
   } catch (error) {
     Alert("info", "Could not get a wallet connection.");
   }
 };
 
 const disconnectWallet = async () => {
+  console.log("happening")
   await web3Connector.clearCachedProvider();
   // provider = null;
   // selectedAccount = null;
