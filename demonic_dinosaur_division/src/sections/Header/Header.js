@@ -129,9 +129,11 @@ const HeaderSection = (container) => {
 
     document.querySelector("#wallet-info").addEventListener("click", () => {
       disconnectWallet();
+      toggleNav();
     });
     document.querySelector("#connect-wallet").addEventListener("click", () => {
       connectWallet();
+      toggleNav();
     });
   });
 };
