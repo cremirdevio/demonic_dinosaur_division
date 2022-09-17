@@ -18,4 +18,4 @@ Used libraries and services:
 4. 'Backstory' section gallery - https://www.lightgalleryjs.com/
 5. Favicon generator - https://realfavicongenerator.net/
 
-If you wanna fork github repository with this project, this is my email - 45ryirtimd@gmail.com
+If you wanna fork a github repository with this project, this is my email - 45ryirtimd@gmail.com

@@ -6,64 +6,64 @@ $danger: #f7a7a3;
 $warning: #ffd48a;
 $info: #2ff8fe;
 
-.alert{
-  width:50%;
-  margin:20px auto;
-  padding:30px;
-  padding-right:45px;
-  position:relative;
-  border-radius:5px;
-  box-shadow:0 0 15px 5px #222;
+.alert {
+    width: 50%;
+    margin: 20px auto;
+    padding: 30px;
+    padding-right: 45px;
+    position: relative;
+    border-radius: 5px;
+    box-shadow: 0 0 15px 5px #222;
 
-  position: fixed;
-  top: 0;
-  right: 20px;
-  z-index: 99;
-  opacity: 0;
-  transition: 2s ease;
-  display: flex;
-  align-items: center;
+    position: fixed;
+    top: 0;
+    right: 20px;
+    z-index: 99;
+    opacity: 0;
+    transition: 2s ease;
+    display: flex;
+    align-items: center;
 
-  &__close{
-    line-height: 1;
-    position:absolute;
-    width:30px;
-    height:30px;
-    opacity:0.5;
-    border-width:1px;
-    border-style:solid;
-    border-radius:50%;
-    right:15px;
-    top:15px;
-    text-align:center;
-    font-size:1.3em;
-    cursor:pointer;
-  }
-
-  &__text {
-    font-family: $friary;
-  }
-
-  &__icon {
-    font-size: 2rem;
-    margin-right: 1rem;
-  }
-}
-
-@mixin alert($type,$bgColor){
-  $accentColor:darken($bgColor,50);
-  .#{$type}{
-    background-color:#{$bgColor};
-    border-left: 20px solid $accentColor;
-    .close{
-      border-color:$accentColor;
-      color:$accentColor;
+    &__close {
+        line-height: 1;
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        opacity: 0.5;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 50%;
+        right: 15px;
+        top: 15px;
+        text-align: center;
+        font-size: 1.3em;
+        cursor: pointer;
     }
-  }
+
+    &__text {
+        font-family: $friary;
+    }
+
+    &__icon {
+        font-size: 2rem;
+        margin-right: 1rem;
+    }
 }
 
-// All mixins accept a $bgColor of $light-red since one unique look is expected for all alert types
-// $light-red should be swapped with the respective colors defined above for alert variations
+@mixin alert($type, $bgColor) {
+    $accentColor: darken($bgColor, 50);
+    .#{$type} {
+        background-color: #{$bgColor};
+        border-left: 20px solid $accentColor;
+        .close {
+            border-color: $accentColor;
+            color: $accentColor;
+        }
+    }
+}
+
+/* All mixins accept a $bgColor of $light-red since one unique look is expected for all alert types
+$light-red should be swapped with the respective colors defined above for alert variations */
 @include alert(alert--simple, $light-red);
 @include alert(alert--success, $light-red);
 @include alert(alert--danger, $light-red);
