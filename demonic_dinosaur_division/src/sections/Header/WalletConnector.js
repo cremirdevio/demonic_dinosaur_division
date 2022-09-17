@@ -37,7 +37,7 @@ const InitiateConnection = async () => {
 };
 
 const getProviders = () => {
-  const infuraId = "821e1837c0304463aca81db16fdaa1b9";
+  const infuraId = process.env.INFURA_ID;
   const providerOptions = {
     walletconnect: {
       package: WalletConnectProvider,
