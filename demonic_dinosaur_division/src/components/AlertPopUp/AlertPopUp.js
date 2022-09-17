@@ -29,12 +29,12 @@ const Alert = (type = DEFAULT, message) => {
   document.querySelector(`.alert`).style.opacity = 1;
 
   // Remove the alert after 5secs
-  // const timeOut = setTimeout(() => {
-  //   const topAlert = document.querySelector(".alert");
-  //   document.querySelector(`.alert`).style.opacity = 0;
-  //   topAlert.parentElement.removeChild(topAlert);
-  //   clearTimeout(timeOut);
-  // }, 5000);
+  const timeOut = setTimeout(() => {
+    const topAlert = document.querySelector(".alert");
+    document.querySelector(`.alert`).style.opacity = 0;
+    topAlert.parentElement.removeChild(topAlert);
+    clearTimeout(timeOut);
+  }, 5000);
 
   // Listenere for closing the alert
   document
