@@ -7,17 +7,18 @@ $warning: #ffd48a;
 $info: #2ff8fe;
 
 .alert {
-  width: 50%;
+  width: 90%;
   max-width: 600px;
   margin: 20px auto;
-  padding: 30px;
-  padding-right: 45px;
+  padding: 10px 5px;
+  // padding: 15px 30px;
+  padding-right: 34px;
   position: relative;
   border-radius: 5px;
   box-shadow: 0 0 15px 5px #222;
 
   position: fixed;
-  top: 0;
+  top: 54px;
   right: 20px;
   z-index: 99;
   opacity: 0;
@@ -27,28 +28,32 @@ $info: #2ff8fe;
   color: #fff;
 
   &__close {
-    line-height: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
-    width: 30px;
-    height: 30px;
+    width: 24px;
+    height: 24px;
     opacity: 0.5;
-    border-width: 1px;
+    border-width: 2px;
     border-style: solid;
     border-radius: 50%;
-    right: 15px;
-    top: 15px;
+    right: 10px;
+    top: 10px;
     text-align: center;
-    font-size: 1.3em;
+    font-size: 1.2em;
+    font-weight: 600;
     cursor: pointer;
   }
 
   &__text {
     font-family: $friary;
+    font-size: 0.8rem;
   }
 
   &__icon {
     font-size: 2rem;
-    margin-right: 1rem;
+    margin-right: 10px;
   }
 }
 
