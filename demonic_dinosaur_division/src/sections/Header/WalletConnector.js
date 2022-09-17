@@ -61,6 +61,9 @@ const getProviders = () => {
 const connectWallet = async () => {
   try {
     let cachedProvider = web3Connector.cacheProvider;
+    await web3Connector.clearCachedProvider();
+    // console.log("Cached provider: ", cachedProvider)
+    
     provider = cachedProvider
       ? await web3Connector.connectTo(cachedProvider)
       : await web3Connector.connect();
@@ -70,6 +73,8 @@ const connectWallet = async () => {
 
     Alert("success", "Wallet Connected.");
   } catch (error) {
+    console.log(error)
+    await web3Connector.clearCachedProvider();
     Alert("info", "Could not get a wallet connection.");
   }
 };
@@ -115,8 +120,9 @@ const subscribeProvider = () => {
 
 const fetchAccountData = async () => {
   const web3library = new Web3(provider);
-  // console.log(provider, await web3library.eth.getAccounts());
-  selectedAccount = provider.accounts[0];
+
+  let accounts = await web3library.eth.getAccounts();
+  selectedAccount = accounts[0];
 };
 
 const setUpView = async () => {
@@ -128,9 +134,9 @@ const setUpView = async () => {
   connectWalletBtn.style.display = "flex";
   walletInfoBtn.style.display = "none";
 
-  if (provider?.connected) {
+  if (provider) {
     // Extract Data from the provider
-    fetchAccountData();
+    await fetchAccountData();
 
     connectWalletBtn.style.display = "none";
     walletInfoBtn.style.display = "flex";
