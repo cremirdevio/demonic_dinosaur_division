@@ -22,12 +22,12 @@ const InitiateConnection = async () => {
     cacheProvider: true,
     providerOptions: getProviders(),
     theme: {
-      background: 'rgb(187, 0, 14)',
-      hover: 'rgb(17, 17, 17)',
-      main: 'rgb(255, 255, 255)',
-      secondary: 'rgb(234, 234, 234)',
-      border: 'rgb(187, 0, 14)'
-    }
+      background: "rgb(187, 0, 14)",
+      hover: "rgb(17, 17, 17)",
+      main: "rgb(255, 255, 255)",
+      secondary: "rgb(234, 234, 234)",
+      border: "rgb(187, 0, 14)",
+    },
   });
 
   setUpView();
@@ -63,7 +63,7 @@ const connectWallet = async () => {
     let cachedProvider = web3Connector.cacheProvider;
     await web3Connector.clearCachedProvider();
     // console.log("Cached provider: ", cachedProvider)
-    
+
     provider = cachedProvider
       ? await web3Connector.connectTo(cachedProvider)
       : await web3Connector.connect();
@@ -73,7 +73,7 @@ const connectWallet = async () => {
 
     Alert("success", "Wallet Connected.");
   } catch (error) {
-    console.log(error)
+    console.log(error);
     await web3Connector.clearCachedProvider();
     Alert("info", "Could not get a wallet connection.");
   }
@@ -91,15 +91,15 @@ const disconnectWallet = async () => {
       await provider.close();
     } catch (error) {
       console.log(error);
-    } finally {
-      setUpView();
-      Alert("success", "Wallet disconnected.");
     }
   }
-  await web3Connector.clearCachedProvider();
 
+  await web3Connector.clearCachedProvider();
   provider = null;
   selectedAccount = null;
+
+  setUpView();
+  Alert("info", "Wallet disconnected.");
 };
 
 const subscribeProvider = () => {
