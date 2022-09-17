@@ -46,7 +46,7 @@ const RoadmapSection = (container) => {
         });
 
         /* typewriter effect */
-        const typewriterText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
+        const typewriterText = 'Coming soon.';
         const typewriterDestination = document.querySelector('.roadmap__subtitle');
 
         textTypingEffect(typewriterText, typewriterDestination);

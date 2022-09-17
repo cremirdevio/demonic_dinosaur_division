@@ -36,7 +36,8 @@
 
 /* slides carousel */
 .roadmap__swiper {
-    height: 450px;
+    /* when you add more text to the slides, set swiper's height to 450px */
+    height: 225px;
     margin-top: 1.5rem;
 }
 
@@ -48,8 +49,9 @@
     /* pagination buttons */
     .swiper-pagination-bullet {
         width: 3px !important;
-        height: 83px !important;
-        margin-bottom: 20px !important;
+        /* when you add more text to the slides, set bullet's height to 83px and margin-bottom to 20px */
+        height: 41px !important;
+        margin-bottom: 10px !important;
         background-color: rgba(255, 252, 237, 0.5) !important;
         border-radius: 12px !important;
         transition: 0.3s ease;
