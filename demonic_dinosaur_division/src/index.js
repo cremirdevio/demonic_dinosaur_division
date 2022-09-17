@@ -44,6 +44,7 @@ mainContainer(bodyContainer);
 FooterSection(bodyContainer);
 // components
 LazyLoad();
+Alert("error", "Demonic Dinosaur Division demolishing the blockchain soon.")
 
 window.addEventListener('DOMContentLoaded', () => {
     HidePageLoader(bodyContainer);
