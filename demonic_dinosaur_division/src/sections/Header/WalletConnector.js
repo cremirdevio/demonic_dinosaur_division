@@ -19,10 +19,15 @@ const InitiateConnection = async () => {
 
   // Create a web3Connector
   web3Connector = new Web3Modal({
-    network: "rinkeby",
     cacheProvider: true,
-    disableInjectedProvider: true,
     providerOptions: getProviders(),
+    theme: {
+      background: 'rgb(187, 0, 14)',
+      hover: 'rgb(17, 17, 17)',
+      main: 'rgb(255, 255, 255)',
+      secondary: 'rgb(234, 234, 234)',
+      border: 'rgb(187, 0, 14)'
+    }
   });
 
   setUpView();
