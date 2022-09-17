@@ -3,6 +3,7 @@ import Web3 from "web3";
 import Web3Modal from "web3modal";
 import CoinbaseWalletSDK from "@coinbase/wallet-sdk";
 import { Alert } from "../../components/AlertPopUp/AlertPopUp";
+import { truncateAddress } from "../../utils";
 
 // Web3Modal
 let web3Connector;
@@ -24,6 +25,7 @@ const InitiateConnection = async () => {
     providerOptions: getProviders(),
   });
 
+  setUpView();
   if (web3Connector.cachedProvider) await connectWallet();
 
   return web3Connector;
@@ -57,49 +59,84 @@ const connectWallet = async () => {
     provider = cachedProvider
       ? await web3Connector.connectTo(cachedProvider)
       : await web3Connector.connect();
-    // const web3library = new Web3(provider);
 
     subscribeProvider(provider);
-    fetchAccountData();
+    setUpView();
+
+    Alert("success", "Wallet Connected.");
   } catch (error) {
     Alert("info", "Could not get a wallet connection.");
   }
 };
 
 const disconnectWallet = async () => {
-  console.log("happening")
+  // Unsubscribe from providers
+  if (provider.removeListener) {
+    provider.removeListener("connect", () => {});
+    provider.removeListener("disconnect", () => {});
+  }
+
+  if (provider.close) {
+    try {
+      await provider.close();
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setUpView();
+      Alert("success", "Wallet disconnected.");
+    }
+  }
   await web3Connector.clearCachedProvider();
-  // provider = null;
-  // selectedAccount = null;
+
+  provider = null;
+  selectedAccount = null;
 };
 
 const subscribeProvider = () => {
   if (provider.on) {
-    // Subscribe to accounts change
-    provider.on("accountsChanged", (accounts) => {
-      // console.log(accounts);
-    });
-
-    // Subscribe to chainId change
-    provider.on("chainChanged", (chainId) => {
-      // console.log(chainId);
-    });
-
     // Subscribe to provider connection
     provider.on("connect", (info) => {
-      console.log(info);
+      console.log("connected", info);
+      fetchAccountData();
     });
 
     // Subscribe to provider disconnection
     provider.on("disconnect", (error) => {
-      // console.log(error);
+      console.log("disconnect", error);
       disconnectWallet();
     });
   }
 };
 
-const fetchAccountData = () => {
+const fetchAccountData = async () => {
+  const web3library = new Web3(provider);
+  // console.log(provider, await web3library.eth.getAccounts());
   selectedAccount = provider.accounts[0];
-}
+};
 
-export { InitiateConnection, connectWallet, disconnectWallet, selectedAccount, provider };
+const setUpView = async () => {
+  const walletInfoBtn = document.querySelector("#wallet-info");
+  const connectWalletBtn = document.querySelector("#connect-wallet");
+  const walletInfoAddressInput = document.querySelector(
+    "#wallet-info #address"
+  );
+  connectWalletBtn.style.display = "flex";
+  walletInfoBtn.style.display = "none";
+
+  if (provider?.connected) {
+    // Extract Data from the provider
+    fetchAccountData();
+
+    connectWalletBtn.style.display = "none";
+    walletInfoBtn.style.display = "flex";
+    walletInfoAddressInput.innerText = truncateAddress(selectedAccount);
+  }
+};
+
+export {
+  InitiateConnection,
+  connectWallet,
+  disconnectWallet,
+  selectedAccount,
+  provider,
+};

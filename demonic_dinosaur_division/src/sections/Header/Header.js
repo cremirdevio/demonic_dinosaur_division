@@ -11,7 +11,6 @@ import {
   selectedAccount,
 } from "./WalletConnector";
 import { Alert } from "../../components/AlertPopUp/AlertPopUp";
-import { truncateAddress } from "../../utils";
 
 const HeaderSection = (container) => {
   container.innerHTML += headerHtml;
@@ -126,31 +125,14 @@ const HeaderSection = (container) => {
       }
     });
 
-    const run = async () => {
-      /* when connect wallet is click */
-      await InitiateConnection();
+    InitiateConnection();
 
-      const walletInfoBtn = document.querySelector("#wallet-info");
-      const walletInfoAddressInput = document.querySelector("#wallet-info #address");
-      walletInfoBtn.style.display = "none";
-      walletInfoBtn.addEventListener("click", () => {
-        Alert("success", "Love is not enough");
-        disconnectWallet();
-      });
-
-      const connectWalletBtn = document.querySelector("#connect-wallet");
-      connectWalletBtn.addEventListener("click", () => {
-        connectWallet();
-      });
-
-      if (provider.connected) {
-        connectWalletBtn.style.display = "none";
-        walletInfoBtn.style.display = "flex";
-        walletInfoAddressInput.innerText = truncateAddress(selectedAccount);
-      }
-    };
-
-    run();
+    document.querySelector("#wallet-info").addEventListener("click", () => {
+      disconnectWallet();
+    });
+    document.querySelector("#connect-wallet").addEventListener("click", () => {
+      connectWallet();
+    });
   });
 };
 
