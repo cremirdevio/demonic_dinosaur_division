@@ -6,9 +6,13 @@ Built using webpack 5 and npm.
 
 Terminal commands:
 
--   npm i - to install necessary dependencies
--   npm run start - to launch a local server with the project
--   npm run build - to create a production version
+-   `npm i` - to install necessary dependencies
+-   `cp .env.example .env` - to create a .env file from .env.example
+-   Update/Add the required environment variables in `.env`
+-   `npm run start` - to launch a local server with the project
+-   `npm run build` - to create a production version
+
+**📝 NB: The .env variables must be filled before building**
 
 Used libraries and services:
 
