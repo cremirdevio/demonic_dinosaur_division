@@ -21,6 +21,7 @@ const InitiateConnection = async () => {
   web3Connector = new Web3Modal({
     cacheProvider: true,
     providerOptions: getProviders(),
+    // disableInjectedProvider: true,
     theme: {
       background: "rgb(187, 0, 14)",
       hover: "rgb(17, 17, 17)",
@@ -60,7 +61,7 @@ const getProviders = () => {
 
 const connectWallet = async () => {
   try {
-    let cachedProvider = web3Connector.cacheProvider;
+    let cachedProvider = web3Connector.cachedProvider;
     await web3Connector.clearCachedProvider();
     // console.log("Cached provider: ", cachedProvider)
 
